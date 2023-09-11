@@ -1,0 +1,16 @@
+{{ $desktop := site.Params.realestates.thumbnail.desktop | default false }}
+{{ $mobile := site.Params.realestates.thumbnail.mobile | default false }}
+{{ if .Scratch.Get "scrollsnap" }}
+  {{ $mobile = site.Params.realestates.thumbnail.scrollsnap | default false }}
+{{ end }}
+<div class="media">
+  {{ with .Params.image}}
+    {{ partial "commons/image.html" (dict
+      "src" .src
+      "alt" .alt
+      "desktop" $desktop
+      "mobile" $mobile
+      "itemprop" "image"
+    ) }}
+  {{ end }}
+</div>

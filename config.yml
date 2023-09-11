@@ -1,0 +1,26 @@
+module:
+  mounts:
+    - source: archetypes
+      target: archetypes
+    - source: assets
+      target: assets
+    - source: content
+      target: content
+    - source: i18n
+      target: i18n
+    - source: layouts
+      target: layouts
+
+params:
+  realestates:
+    thumbnail:
+      desktop: "306x459"
+      mobile: "138x207"
+      scrollsnap: "240x360"
+    image:
+      desktop: "746x"
+      mobile: "300x"
+
+# Default
+permalinks:
+  realestates: /realestates/:slug/

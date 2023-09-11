@@ -1,0 +1,14 @@
+realestates:
+  all: All real estates
+  discover: Discover real estate
+  latest: Latest real estates
+  latest_person: Latest real estates by {{ .Person }}
+  latest_section: Our {{ .Section }}’s latest real estates 
+  list: List of real estates by the person concerned
+  list_person: List of {{ .Person }}’s real estates
+  more: Discover more real estates
+  more_person: Discover more real estates by {{ .Person }}
+  title:
+    one: Real estate
+    other: Real estates
+  title_person: "{{ .Person }}’s real estates"

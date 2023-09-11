@@ -1,0 +1,14 @@
+realestates:
+  all: Toutes les annonces immobilières
+  discover: Découvrir l’annonce immobilière
+  latest: Dernières annonces immobilières
+  latest_person: Dernières annonces immobilières de {{ .Person }}
+  latest_section: Dernières annonces immobilières en {{ .Section }}
+  list: Liste des annonces immobilières de la personne concernée
+  list_person: Liste des annonces immobilières de {{ .Person }}
+  more: Découvrir plus d’annonces immobilières
+  more_person: Découvrir plus d’annonces immobilières de {{ .Person }}
+  title:
+    one: Annonce immobilière
+    other: Annonces immobilières
+  title_person: Annonces immobilières de {{ .Person }}

@@ -1,0 +1,7 @@
+<div class="metas">
+  {{ partial "commons/item/date" (dict "date" .Date "format" ":date_long") }}
+  {{ $realestates_types := "publications/item/realestates_types.html" }}
+  {{ if templates.Exists ( printf "partials/%s" $realestates_types ) }}
+    {{ partial $realestates_types . }}
+  {{ end }}
+</div>
