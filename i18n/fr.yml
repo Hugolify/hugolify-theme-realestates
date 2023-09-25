@@ -1,13 +1,47 @@
 realestates:
   all: Toutes les annonces immobilières
+  area: Surface
+  area_with_value: "{{ .Value }} {{ .Unit }}"
+  bedroom: 
+    one: Chambre
+    other: Chambres
+  bedroom_with_value:
+    one: "{{ .Value }} chambre"
+    other: "{{ .Value }} chambres"
+  diagnostic: Diagnostic de performance énergétique
   discover: Découvrir l’annonce immobilière
+  elevator: Ascenseur
+  field: Terrain
+  floor: Étage
+  informations: Informations sur le bien
   latest: Dernières annonces immobilières
   latest_person: Dernières annonces immobilières de {{ .Person }}
   latest_section: Dernières annonces immobilières en {{ .Section }}
+  level: 
+    one: Niveau
+    other: Niveaux
+  level_with_value:
+    one: "{{ .Value }} étage"
+    other: "{{ .Value }} étages"
   list: Liste des annonces immobilières de la personne concernée
   list_person: Liste des annonces immobilières de {{ .Person }}
+  location: Emplacement du bien
   more: Découvrir plus d’annonces immobilières
   more_person: Découvrir plus d’annonces immobilières de {{ .Person }}
+  pricing: Prix
+  pricing_with_value: "Prix : {{ .Value }}"
+  reference: Référence
+  reference_short: Réf.
+  reference_long: Référence agence
+  reference_with_value: "Référence : {{ .Value }}"
+  reference_with_value_short: "Réf. {{ .Value }}"
+  reference_with_value_long: "Référence agence : {{ .Value }}"
+  room: 
+    one: Pièce
+    other: Pièces
+  room_with_value:
+    one: "{{ .Value }} pièce"
+    other: "{{ .Value }} pièces"
   title:
     one: Annonce immobilière
     other: Annonces immobilières

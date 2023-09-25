@@ -1,13 +1,47 @@
 realestates:
   all: All real estates
+  area: Area
+  area_with_value: "{{ .Value }} {{ .Unit }}"
+  bedroom: 
+    one: Bedroom
+    other: Bedrooms
+  bedroom_with_value:
+    one: "{{ .Value }} bedroom"
+    other: "{{ .Value }} bedrooms"
+  diagnostic: Energy performance diagnostic
   discover: Discover real estate
+  elevator: Elevator
+  field: Field
+  floor: Floor
+  informations: Property Information
   latest: Latest real estates
   latest_person: Latest real estates by {{ .Person }}
-  latest_section: Our {{ .Section }}’s latest real estates 
+  latest_section: Our {{ .Section }}’s latest real estates
+  level: 
+    one: Level
+    other: Levels
+  level_with_value:
+    one: "{{ .Value }} level"
+    other: "{{ .Value }} levels"
   list: List of real estates by the person concerned
   list_person: List of {{ .Person }}’s real estates
+  location: Location of the property
   more: Discover more real estates
   more_person: Discover more real estates by {{ .Person }}
+  pricing: Pricing
+  pricing_with_value: "Price : {{ .Value }}"
+  reference: Reference
+  reference_short: Ref.
+  reference_long: Agency reference
+  reference_with_value: "Reference: {{ .Value }}"
+  reference_with_value_short: "Ref. {{ .Value }}"
+  reference_with_value_long: "Agency reference: {{ .Value }}"
+  room: 
+    one: Room
+    other: Rooms
+  room_with_value:
+    one: "{{ .Value }} room"
+    other: "{{ .Value }} rooms"
   title:
     one: Real estate
     other: Real estates
