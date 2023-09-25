@@ -1,17 +1,37 @@
 .realestate
-    --bs-card-spacer-x: 0
+    --bs-card-bg: #{$gray-100}
     --bs-card-border-width: 0
-    --bs-card-border-radius: 0
-    --bs-card-inner-border-radius: 0
-    --bs-card-bg: transparent
-    --bs-card-cap-bg: transparent
-    --bs-card-cap-padding-x: 0
-    --bs-card-cap-padding-y: 0
+    --bs-card-border-radius: 5px
+    --bs-card-inner-border-radius: 5px
+    --bs-card-spacer-x: 1.5rem
+    --bs-card-spacer-y: 1.5rem
     @extend .card
+    height: 100%
     .media
         --bs-aspect-ratio: 75%
+        background-color: $gray-200
     a
         @extend .stretched-link
+    .type
+        font-size: $small-font-size
+        margin-bottom: 0
+    .name
+        font-size: 1.25rem
     .metas
         color: $text-muted
-        margin-bottom: $paragraph-margin-bottom
+    .offers
+        align-items: baseline   
+        display: flex
+        justify-content: space-between
+        margin-top: $paragraph-margin-bottom
+    .reference
+        --bs-badge-color: $gray-800
+        --bs-badge-font-weight: #{$font-weight-normal}
+        --bs-badge-padding-x: .75rem
+        --bs-badge-padding-y: .5rem
+        @extend .badge
+        background-color: $gray-200
+        margin-bottom: 0
+        text-transform: uppercase
+    .pricing
+        margin-bottom: 0

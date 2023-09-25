@@ -1,0 +1,4 @@
+{{ $unit := $.Site.Params.area_unit | default "m<sup>2</sup>" }}
+{{ with .Params.area }}
+  <p class="area">{{ i18n "realestates.area_with_value" (dict "Value" . "Unit" $unit) | safeHTML }}</p>
+{{ end }}

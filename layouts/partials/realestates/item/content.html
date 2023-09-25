@@ -1,4 +1,9 @@
 <a href="{{ .Permalink }}" itemprop="url" class="content">
-  {{ partial "realestates/item/metas" . }}
+  {{ $realestates_types := "realestates/item/realestates_types.html" }}
+  {{ if templates.Exists ( printf "partials/%s" $realestates_types ) }}
+    {{ partial $realestates_types . }}
+  {{ end }}
   {{ partial "commons/item/title" . }}
+  {{ partial "realestates/item/metas" . }}
+  {{ partial "realestates/item/offers" . }}
 </a>

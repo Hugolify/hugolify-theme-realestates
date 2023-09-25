@@ -1,0 +1,4 @@
+{{ with .Params.rooms }}
+  {{ $rooms := partial "func/PrepareHTML" . }}
+  <p class="rooms">{{ i18n "realestates.room_with_value" (dict "Value" $rooms) }}</p>
+{{ end }}
