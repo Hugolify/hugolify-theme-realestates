@@ -1,0 +1,26 @@
+.page-realestates
+    .metas,
+    .informations,
+    .diagnostic,
+    .location
+        @include margin-bottom($global-spacing)
+    .metas
+        .pricing
+            font-size: 1.25rem
+            margin-left: auto
+            &::before
+                content: none
+    
+    .informations
+        table
+            margin-bottom: 0
+        @include media-breakpoint-up(md)
+            table
+                display: flex
+            tbody
+                flex: 1
+            tr
+                width: 100%
+            th,
+            td
+                width: 50%

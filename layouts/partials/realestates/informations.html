@@ -1,0 +1,62 @@
+<section class="informations">
+  <h2>{{ i18n "realestates.informations" }}</h2>
+  <table>
+    <tbody>
+      {{ with .Params.reference }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.reference_long" }}</th>
+          <td>{{ partial "func/PrepareHTML" . }}</td>
+        </tr>
+      {{ end }}
+      {{ with .Params.area }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.area" }}</th>
+          <td>{{ . | lang.FormatNumber 2 }}</td>
+        </tr>
+      {{ end }}
+      {{ with .Params.field }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.field" }}</th>
+          <td>{{ . | lang.FormatNumber 2 }}</td>
+        </tr>
+      {{ end }}
+      {{ with .Params.offer.price }}
+        {{ $currency := $.Site.Params.currency | default "EUR" }}
+        {{ $price := . | lang.FormatCurrency 2 $currency }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.pricing" }}</th>
+          <td>{{ $price }}</td>
+        </tr>
+      {{ end }}
+    </tbody>
+    <tbody>
+      {{ with .Params.rooms }}
+        {{ $rooms := partial "func/PrepareHTML" . }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.room" . }}</th>
+          <td>{{ i18n "realestates.room_with_value" (dict "Value" $rooms) }}</td>
+        </tr>
+      {{ end }}
+      {{ with .Params.bedrooms }}
+        {{ $bedrooms := partial "func/PrepareHTML" . }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.bedroom" . }}</th>
+          <td>{{ i18n "realestates.bedroom_with_value" (dict "Value" $bedrooms) }}</td>
+        </tr>
+      {{ end }}
+      {{ with .Params.levels }}
+        {{ $levels := partial "func/PrepareHTML" . }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.level" . }}</th>
+          <td>{{ i18n "realestates.level_with_value" (dict "Value" $levels) }}</td>
+        </tr>
+      {{ end }}
+      {{ with .Params.floor }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.floor" }}</th>
+          <td>{{ partial "func/PrepareHTML" . }}</td>
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</section>

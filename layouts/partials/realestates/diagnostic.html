@@ -1,0 +1,14 @@
+{{ with .Params.diagnostic }}
+  {{ if or .kwh .co2 }}
+    <section class="diagnostic">
+      <h2>{{ i18n "realestates.diagnostic" }}</h2>
+      
+      {{ with .kwh }}
+        <p>{{ . }} kWh/m<sup>2</sup>.an</p>
+      {{ end }}
+      {{ with .co2 }}
+        <p>{{ . }} CO<sub>2</sub>/m<sup>2</sup>.an</p>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}

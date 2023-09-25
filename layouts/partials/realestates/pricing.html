@@ -1,0 +1,5 @@
+{{ with .Params.offer.price }}
+  {{ $currency := $.Site.Params.currency | default "EUR" }}
+  {{ $price := . | lang.FormatCurrency 2 $currency }}
+  <p class="pricing">{{ $price }}</p>
+{{ end }}
