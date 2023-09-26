@@ -42,7 +42,13 @@ realestates:
   room_with_value:
     one: "{{ .Value }} room"
     other: "{{ .Value }} rooms"
+  sale:
+    one: Sale
+    other: Sales
   title:
     one: Real estate
     other: Real estates
   title_person: "{{ .Person }}’s real estates"
+  visit:
+    one: Visit
+    other: Visits
