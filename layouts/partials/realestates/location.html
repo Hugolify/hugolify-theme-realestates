@@ -1,9 +1,14 @@
 {{ with .Params.address }}
-  {{ if and .lat .long }}
+  {{ if or .location (and .lat .long) }}
     <section class="location">
       <h2>{{ i18n "realestates.location" }}</h2>
-      {{ $coordinates := slice .long .lat  }}
-      {{ $location := dict "type" "Point" "coordinates" $coordinates | jsonify }}
+      {{ $location := false }}
+      {{ with .location }}
+        {{ $location = . }}
+      {{ else }}
+        {{ $coordinates := slice .long .lat  }}
+        {{ $location = dict "type" "Point" "coordinates" $coordinates | jsonify }}
+      {{ end }}
       {{ $zoom := 15 }}
       <div class="map js-map" data-location="{{ $location }}" data-zoom="{{ $zoom }}" data-lat="{{ .lat }}" data-long="{{ .long }}"></div>
     </section>

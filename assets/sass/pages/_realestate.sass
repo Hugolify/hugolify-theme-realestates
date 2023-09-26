@@ -1,7 +1,10 @@
 .page-realestates
+    
     .metas,
     .informations,
     .diagnostic,
+    .documents,
+    .transaction,
     .location
         @include margin-bottom($global-spacing)
     .metas
@@ -19,7 +22,7 @@
                 display: flex
                 justify-content: space-between
             tbody
-                width: 48%
+                width: calc(50% - $grid-gutter-width / 2)
             tr
                 display: flex
             tr:first-of-type
@@ -27,3 +30,18 @@
             th,
             td
                 width: 50%
+    
+    .person 
+        .media
+            border-radius: 50%
+        .content + div
+            --bs-aspect-ratio: 100%
+            width: 50px
+        a
+            font-size: $small-font-size
+    
+    @include media-breakpoint-down(md)
+        .grid > 
+            .sidebar
+                @include margin-bottom($global-spacing)
+                order: 2
