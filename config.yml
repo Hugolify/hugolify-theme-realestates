@@ -14,11 +14,11 @@ module:
 params:
   realestates:
     thumbnail:
-      desktop: "306x459"
-      mobile: "138x207"
-      scrollsnap: "240x360"
+      desktop: "416x291"
+      mobile: "300x210"
+      scrollsnap: "240x168"
     image:
-      desktop: "746x"
+      desktop: "850x"
       mobile: "300x"
 
 # Default
