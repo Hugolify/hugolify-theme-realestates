@@ -3,7 +3,8 @@
     .metas,
     .informations,
     .diagnostic,
-    .documents,
+    .properties_gallery,
+    .properties_documents,
     .transaction,
     .location
         @include margin-bottom($global-spacing)
@@ -30,9 +31,16 @@
             th,
             td
                 width: 50%
-    
-    @include media-breakpoint-down(md)
-        .grid > 
-            .sidebar
-                @include margin-bottom($global-spacing)
-                order: 2
+
+    // @include media-breakpoint-up(md)
+    //     .grid > 
+    //         .properties_gallery
+    //             grid-column: 1/13
+    //             grid-row: 2
+    //         .content
+    //             grid-column: 1/9
+    //             grid-row: 3
+    //         .sidebar
+    //             grid-row: 9/13
+    //             grid-row: 3
+

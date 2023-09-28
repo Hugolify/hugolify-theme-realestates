@@ -1,6 +1,7 @@
 {{ $unit := $.Site.Params.area_unit | default "m<sup>2</sup>" }}
-<section class="informations">
-  <h2>{{ i18n "realestates.informations" }}</h2>
+{{ $informations := i18n "realestates.informations" }}
+<section class="informations" id="{{ $informations | urlize }}">
+  <h2>{{ $informations }}</h2>
   <table>
     <tbody>
       {{ with .Params.reference }}

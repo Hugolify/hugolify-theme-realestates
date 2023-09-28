@@ -1,13 +1,8 @@
-{{ $desktop := site.Params.realestates.image.desktop | default false }}
-{{ $mobile := site.Params.realestates.image.mobile | default false }}
-{{ range .Params.images }}
-  {{ with . }}
-    {{ partial "commons/image.html" (dict
-      "src" .src
-      "alt" .alt
-      "picture_class" "featured-image"
-      "desktop" $desktop
-      "mobile" $mobile
-    ) }}
-  {{ end }}
+{{ with .Params.gallery }}
+  {{ $len := . | len }}
+  {{ $gallery := i18n "gallery" $len }}
+  {{ $ratio := .7 }}
+  <section class="properties_gallery" id="{{ $gallery | urlize }}">
+    {{ partial "commons/gallery" (dict "images" . "ratio" $ratio) }}
+  </section>
 {{ end }}
