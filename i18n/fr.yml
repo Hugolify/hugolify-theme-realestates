@@ -13,6 +13,12 @@ realestates:
   elevator: Ascenseur
   field: Terrain
   floor: Étage
+  for_sale: 
+    one: Bien proposé à la vente
+    other: Biens proposés à la vente
+  for_sale_by: 
+    one: "Bien proposé à la vente par {{ .Person }}"
+    other: "Biens proposés à la vente par {{ .Person }}"
   informations: Informations sur le bien
   latest: Dernières annonces immobilières
   latest_person: Dernières annonces immobilières de {{ .Person }}
@@ -42,9 +48,12 @@ realestates:
   room_with_value:
     one: "{{ .Value }} pièce"
     other: "{{ .Value }} pièces"
-  sale:
-    one: Vente
-    other: Ventes
+  sold:
+    one: Bien vendu
+    other: Biens vendus
+  sold_by: 
+    one: "Bien vendu par {{ .Person }}"
+    other: "Biens vendus par {{ .Person }}"
   title:
     one: Annonce immobilière
     other: Annonces immobilières

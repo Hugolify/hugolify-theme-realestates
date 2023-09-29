@@ -13,6 +13,12 @@ realestates:
   elevator: Elevator
   field: Field
   floor: Floor
+  for_sale: 
+    one: Property offered for sale
+    other: Properties offered for sale
+  for_sale_by: 
+    one: "Property offered for sale by {{ .Person }}"
+    other: "Properties offered for sale by {{ .Person }}"
   informations: Property Information
   latest: Latest real estates
   latest_person: Latest real estates by {{ .Person }}
@@ -42,9 +48,12 @@ realestates:
   room_with_value:
     one: "{{ .Value }} room"
     other: "{{ .Value }} rooms"
-  sale:
-    one: Sale
-    other: Sales
+  sold:
+    one: Property sold
+    other: Properties sold
+  sold_by: 
+    one: "Property sold by {{ .Person }}"
+    other: "Properties sold by {{ .Person }}"
   title:
     one: Real estate
     other: Real estates
