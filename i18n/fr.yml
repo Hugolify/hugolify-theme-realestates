@@ -48,6 +48,9 @@ realestates:
   room_with_value:
     one: "{{ .Value }} pièce"
     other: "{{ .Value }} pièces"
+  sale:
+    one: Vente
+    other: Ventes
   sold:
     one: Bien vendu
     other: Biens vendus
