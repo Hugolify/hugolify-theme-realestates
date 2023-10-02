@@ -1,4 +1,9 @@
-<div class="offers">
-  {{ partial "realestates/item/reference" . }}
-  {{ partial "realestates/item/pricing" . }}
-</div>
+{{ $context := . }}
+{{ with .Params.offer }}
+  {{ if not .sold }}
+    <div class="offers">
+      {{ partial "realestates/item/reference" $context }}
+      {{ partial "realestates/item/pricing" $context }}
+    </div>
+  {{ end }}
+{{ end }}

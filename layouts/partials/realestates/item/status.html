@@ -1,0 +1,5 @@
+{{ with .Params.offer }}
+  {{ with .status }}
+    <p class="status">{{ partial "func/PrepareHTML" . }}</p>
+  {{ end }}
+{{ end }}

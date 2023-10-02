@@ -15,6 +15,17 @@
     .realestates_types
         font-size: $small-font-size
         margin-bottom: 0
+    .status
+        --bs-badge-color: #{$gray-800}
+        --bs-badge-font-weight: #{$font-weight-normal}
+        --bs-badge-padding-x: .75rem
+        --bs-badge-padding-y: .5rem
+        @extend .badge
+        pointer-events: none
+        position: absolute
+        right: .5rem
+        top: .5rem
+        z-index: 1
     .name
         font-size: 1.25rem
     .metas
@@ -25,7 +36,7 @@
         justify-content: space-between
         margin-top: $paragraph-margin-bottom
     .reference
-        --bs-badge-color: $gray-800
+        --bs-badge-color: #{$gray-800}
         --bs-badge-font-weight: #{$font-weight-normal}
         --bs-badge-padding-x: .75rem
         --bs-badge-padding-y: .5rem
