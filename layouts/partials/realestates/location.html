@@ -1,0 +1,16 @@
+{{ with .Params.address }}
+  {{ if or .location (and .lat .long) }}
+    {{ $location := i18n "realestates.location" }}
+    <section class="location" id="{{ $location | urlize }}">
+      <h2>{{ $location }}</h2>
+      {{ $location := false }}
+      {{ with .location }}
+        {{ $location = . }}
+      {{ else }}
+        {{ $coordinates := slice .long .lat  }}
+        {{ $location = dict "type" "Point" "coordinates" $coordinates | jsonify }}
+      {{ end }}
+      {{ partial "commons/map" (dict "location" $location "marker_hidden" true ) }}
+    </section>
+  {{ end }}
+{{ end }}
