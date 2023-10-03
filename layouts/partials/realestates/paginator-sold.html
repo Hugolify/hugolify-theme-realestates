@@ -1,0 +1,8 @@
+{{- $pages := where (where site.RegularPages "Section" "realestates") "Params.offer.sold" "eq" true -}}
+{{- $paginator := (.Paginate $pages).Pages -}}
+{{ $atf := true }}
+{{ if partial "func/HasImageHero" . }}
+  {{ $atf = false }}
+{{ end }}
+{{ partial "realestates/items" (dict "pages" $paginator "abovethefold" $atf) }}
+{{ partial "nav/pagination.html" . }}
