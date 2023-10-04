@@ -1,8 +1,8 @@
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Offer",
-    "headline": {{ .Title }},
+    "@type": "Product",
+    "name": {{ .Title }},
 
     {{ with .Params.image }}
       "thumbnailUrl": {{ . | absURL }},
@@ -12,8 +12,28 @@
       "datePublished": {{ . }},
     {{ end }}
 
-    {{ with .Params.description }}
-      "abstract": {{ . | plainify | safeHTML }},
+    {{ with .Params.reference }}
+      "sku": {{ . | plainify }},
+    {{ end }}
+
+    {{ with .Params.offer }}
+
+      "offers": {
+        "@type": "Offer",
+      
+        {{ with .sold }}
+          "availability": "https://schema.org/OutOfStock",
+        {{ else }}
+          "availability": "https://schema.org/InStock",
+        {{ end }}
+
+        {{ with .price }}
+          "price": {{ . | plainify }},
+        {{ end }}
+        
+        "priceCurrency": {{ $currency := $.Site.Params.currency | default "EUR" }}
+      }
+
     {{ end }}
 
     {{ with .Content }}
