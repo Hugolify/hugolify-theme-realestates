@@ -17,7 +17,6 @@
     {{ end }}
 
     {{ with .Params.offer }}
-
       "offers": {
         "@type": "Offer",
       
@@ -30,10 +29,12 @@
         {{ with .price }}
           "price": {{ . | plainify }},
         {{ end }}
-        
-        "priceCurrency": {{ $currency := $.Site.Params.currency | default "EUR" }}
-      }
 
+        {{ $currency := $.Site.Params.currency | default "EUR" }}
+        {{ with $currency }}
+          "priceCurrency": {{ . }}
+        {{ end }}
+      },
     {{ end }}
 
     {{ with .Content }}
