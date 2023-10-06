@@ -31,16 +31,70 @@
             th,
             td
                 width: 50%
+    
+    .person 
+        --bs-card-bg: #{$light}
+        --bs-card-spacer-x: 2rem
+        --bs-card-spacer-y: 2rem
+        @include media-breakpoint-up(lg)
+            position: sticky
+            top: $offset
+            z-index: 1
+            @media (prefers-reduced-motion: no-preference)
+                transition: top .3s ease
+            html.is-scrolling-down &
+                top: 1rem
+                
+        .media
+            --bs-aspect-ratio: 100%
+            border-radius: 50%
+            margin-left: var(--bs-card-spacer-x)
+            margin-top: var(--bs-card-spacer-y)
+            width: 100px
+        a::after
+            content: none
+        ul
+            font-size: $small-font-size
+            list-style: none
+            line-height: 1.8
+            padding-left: 0
+            margin-bottom: 1.5rem
+            margin-top: 1.5rem
+            @if variable-exists(bootstrap-icons-map)
+                b
+                    display: none
+                .email
+                    &::before
+                        @include icon("envelope")
+                        margin-right: .5em
+                .phone
+                    &::before
+                        @include icon("phone")
+                        margin-right: .5em
+                .fax
+                    &::before
+                        @include icon("laptop")
+                        margin-right: .5em
+        .btn
+            @extend .btn-primary
 
-    // @include media-breakpoint-up(md)
-    //     .grid > 
-    //         .properties_gallery
-    //             grid-column: 1/13
-    //             grid-row: 2
-    //         .content
-    //             grid-column: 1/9
-    //             grid-row: 3
-    //         .sidebar
-    //             grid-row: 9/13
-    //             grid-row: 3
+    @include media-breakpoint-up(md)
+        .grid > 
+            .content
+                grid-column: 1/13
+                grid-row: 3
+            .sidebar
+                grid-column: 1/13
+                grid-row: 4
+    @include media-breakpoint-up(lg)
+        .grid > 
+            // .properties_gallery
+            //     grid-column: 1/13
+            //     grid-row: 2
+            .content
+                grid-column: 1/9
+                grid-row: 3
+            .sidebar
+                grid-column: 9/13
+                grid-row: 3
 

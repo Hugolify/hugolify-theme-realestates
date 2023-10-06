@@ -10,6 +10,8 @@ module:
       target: i18n
     - source: layouts
       target: layouts
+    - source: static
+      target: static
 
 params:
   realestates:
