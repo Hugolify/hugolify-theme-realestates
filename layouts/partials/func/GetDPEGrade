@@ -1,0 +1,22 @@
+{{- $value := . -}}
+{{- $grade := false -}}
+
+{{ with $value }}  
+  {{ if lt . 70 }}
+    {{ $grade = "A" }}
+  {{ else if and (ge . 70) (lt . 110) }}
+    {{ $grade = "B" }}
+  {{ else if and (ge . 110) (lt . 190) }}
+    {{ $grade = "C" }}
+  {{ else if and (ge . 180) (lt . 250) }}
+    {{ $grade = "D" }}
+  {{ else if and (ge . 250) (lt . 330) }}
+    {{ $grade = "E" }}
+  {{ else if and (ge . 330) (lt . 420) }}
+    {{ $grade = "F" }}
+  {{ else if ge . 420 }}
+    {{ $grade = "G" }}
+  {{ end }}
+{{ end }}
+
+{{ return $grade }}

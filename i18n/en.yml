@@ -8,7 +8,16 @@ realestates:
   bedroom_with_value:
     one: "{{ .Value }} bedroom"
     other: "{{ .Value }} bedrooms"
-  diagnostic: Energy performance diagnostic
+  diagnostic:
+    dpe:
+      hight: Very efficient accommodation
+      low: Extremely energy-intensive housing
+      value: "{{ .Value }} kWh/m<sup>2</sup>.year"
+    ges:
+      hight: Low CO2 emissions
+      low: Very significant CO2 emissions
+      value: "{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.year"
+    title: Energy performance diagnostic
   discover: Discover real estate
   elevator: Elevator
   field: Field

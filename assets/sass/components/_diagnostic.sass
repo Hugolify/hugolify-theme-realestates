@@ -1,0 +1,69 @@
+.diagnostic
+    .diagrams
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+    .diagram
+        flex-basis: 100%
+        margin-bottom: $spacer
+        @include media-breakpoint-up(md)
+            flex-basis: calc(50% - #{$grid-gutter-width} / 2)
+            margin-bottom: 0
+        div
+            padding-right: 20%
+            position: relative
+        img
+            height: auto
+            width: 100%
+        p
+            font-size: px2rem(12)
+            font-weight: $font-weight-bold
+            margin-bottom: 0
+            text-transform: uppercase
+        .value
+            background: black
+            border: 2px solid $body-bg
+            border-radius: 0.25rem
+            color: white
+            padding: 0.5rem .75rem
+            position: absolute
+            right: 0
+            text-transform: none
+            top: 8%
+            transform: translateY(-50%)
+            &::before
+                border-bottom: 3px solid transparent
+                border-right: 3px solid black
+                border-top: 3px solid transparent
+                content: ''
+                height: 0
+                left: 0
+                position: absolute
+                top: 50%
+                transform: translateX(-100%) translateY(-50%)
+                width: 0
+    .ges
+        .value
+            border-radius: 2rem
+
+    $dpe: "a" "#449970" 9.5%, "b" "#6bad5e" 22.75%, "c" "#88ba7d" 36%, "d" "#f3e54f" 50%, "e" "#e8b641" 63.5%, "f" "#de8647" 76.75%, "g" "#c6362c" 90.5%
+    @each $grade, $color, $top in $dpe
+        .dpe-#{$grade}
+            .value
+                --dpe-color: #{$color}
+                background-color: var(--dpe-color)
+                top: $top
+                &::before
+                    border-right-color: var(--dpe-color)
+
+    $ges: "a" "#afdaf5" 9.5%, "b" "#93b4d0" 22.75%, "c" "#7c92ae" 36%, "d" "#626f8c" 50%, "e" "#4e536f" 63.5%, "f" "#38364f" 76.75%, "g" "#261c33" 90.5%
+    @each $grade, $color, $top in $ges
+        .ges-#{$grade}
+            .value
+                --ges-color: #{$color}
+                background-color: var(--ges-color)
+                top: $top
+                &::before
+                    border-right-color: var(--ges-color)
+   
+    
