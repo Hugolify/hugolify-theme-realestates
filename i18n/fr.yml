@@ -2,12 +2,21 @@ realestates:
   all: Toutes les annonces immobilières
   area: Surface
   area_with_value: "{{ .Value }} {{ .Unit }}"
+  bathroom_showerroom:
+    one: Salle de bain / d’eau
+    other: Salles de bain / d’eau
+  bathroom:
+    one: Salle de bain
+    other: Salles de bain
+  bathroom_with_count:
+    one: "{{ .count }} salle de bain"
+    other: "{{ .count }} salles de bain"
   bedroom: 
     one: Chambre
     other: Chambres
-  bedroom_with_value:
-    one: "{{ .Value }} chambre"
-    other: "{{ .Value }} chambres"
+  bedroom_with_count:
+    one: "{{ .count }} chambre"
+    other: "{{ .count }} chambres"
   diagnostic:
     dpe:
       hight: Logement très performant
@@ -19,8 +28,10 @@ realestates:
       value: "{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.an"
     title: Diagnostic de performance énergétique
   discover: Découvrir l’annonce immobilière
+  district: Secteur
   elevator: Ascenseur
   field: Terrain
+  field_with_value: "{{ .Value }} {{ .Unit }}"
   floor: Étage
   for_sale: 
     one: Bien proposé à la vente
@@ -28,6 +39,7 @@ realestates:
   for_sale_by: 
     one: "Bien proposé à la vente par {{ .Person }}"
     other: "Biens proposés à la vente par {{ .Person }}"
+  groundfloor: <abbr title="Rez-de-chaussée">RDC</abbr>
   informations: Informations sur le bien
   latest: Dernières annonces immobilières
   latest_person: Dernières annonces immobilières de {{ .Person }}
@@ -35,9 +47,9 @@ realestates:
   level: 
     one: Niveau
     other: Niveaux
-  level_with_value:
-    one: "{{ .Value }} étage"
-    other: "{{ .Value }} étages"
+  level_with_count:
+    one: "{{ .count }} étage"
+    other: "{{ .count }} étages"
   list: Liste des annonces immobilières de la personne concernée
   list_person: Liste des annonces immobilières de {{ .Person }}
   location: Emplacement du bien
@@ -54,12 +66,18 @@ realestates:
   room: 
     one: Pièce
     other: Pièces
-  room_with_value:
-    one: "{{ .Value }} pièce"
-    other: "{{ .Value }} pièces"
+  room_with_count:
+    one: "{{ .count }} pièce"
+    other: "{{ .count }} pièces"
   sale:
     one: Vente
     other: Ventes
+  showerroom:
+    one: Salle d’eau
+    other: Salles d’eau
+  showerroom_with_count:
+    one: "{{ .count }} salle d’eau"
+    other: "{{ .count }} salles d’eau"
   sold:
     one: Bien vendu
     other: Biens vendus
@@ -73,3 +91,4 @@ realestates:
   visit: 
     one: Visite
     other: Visites
+  year_construction: Année de construction

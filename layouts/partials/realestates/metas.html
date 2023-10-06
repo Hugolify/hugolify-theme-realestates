@@ -4,6 +4,7 @@
   {{ if templates.Exists ( printf "partials/%s" $realestates_types ) }}
     {{ partial $realestates_types . }}
   {{ end }}
+  {{ partial "realestates/area" . }}
   {{ partial "realestates/rooms" . }}
   {{ partial "realestates/pricing" . }}
 </div>

@@ -10,20 +10,34 @@
           <td>{{ partial "func/PrepareHTML" . }}</td>
         </tr>
       {{ end }}
-      {{ with .Params.area }}
+    {{ with .Params.informations }}
+      {{ with .district }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.district" }}</th>
+          <td>{{ partial "func/PrepareHTML" . }}</td>
+        </tr>
+      {{ end }}
+      {{ with .area }}
         {{ $value := . | lang.FormatNumber 0 }}
         <tr>
           <th scope="row">{{ i18n "realestates.area" }}</th>
           <td>{{ i18n "realestates.area_with_value" (dict "Value" $value "Unit" $unit) | safeHTML }}</td>
         </tr>
       {{ end }}
-      {{ with .Params.field }}
+      {{ with .field }}
         {{ $value := . | lang.FormatNumber 0 }}
         <tr>
           <th scope="row">{{ i18n "realestates.field" }}</th>
-          <td>{{ i18n "realestates.area_with_value" (dict "Value" $value "Unit" $unit) | safeHTML }}</td>
+          <td>{{ i18n "realestates.field_with_value" (dict "Value" $value "Unit" $unit) | safeHTML }}</td>
         </tr>
       {{ end }}
+      {{ with .year }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.year_construction" }}</th>
+          <td>{{ partial "func/PrepareHTML" . }}</td>
+        </tr>
+      {{ end }}
+    {{ end }}
       {{ with .Params.offer.price }}
         {{ $currency := $.Site.Params.currency | default "EUR" }}
         {{ $price := . | lang.FormatCurrency 2 $currency }}
@@ -34,33 +48,56 @@
       {{ end }}
     </tbody>
     <tbody>
-      {{ with .Params.rooms }}
-        {{ $rooms := partial "func/PrepareHTML" . }}
+    {{ with .Params.informations }}
+      {{ with .rooms }}
         <tr>
           <th scope="row">{{ i18n "realestates.room" . }}</th>
-          <td>{{ i18n "realestates.room_with_value" (dict "Value" $rooms) }}</td>
+          <td>{{ i18n "realestates.room_with_count" (dict "count" .) }}</td>
         </tr>
       {{ end }}
-      {{ with .Params.bedrooms }}
-        {{ $bedrooms := partial "func/PrepareHTML" . }}
+      {{ with .bedrooms }}
         <tr>
           <th scope="row">{{ i18n "realestates.bedroom" . }}</th>
-          <td>{{ i18n "realestates.bedroom_with_value" (dict "Value" $bedrooms) }}</td>
+          <td>{{ i18n "realestates.bedroom_with_count" (dict "count" .) }}</td>
         </tr>
       {{ end }}
-      {{ with .Params.levels }}
-        {{ $levels := partial "func/PrepareHTML" . }}
+      {{ if or .bathrooms .showerrooms }}
+        {{ $bathrooms := .bathrooms | default 0 }}
+        {{ $showerrooms := .showerrooms | default 0 }}
+        {{ $count := add $bathrooms $showerrooms }}
+        {{ $label := i18n "realestates.bathroom_showerroom" $count }}
+        {{ if not .bathrooms }}
+          {{ $label = i18n "realestates.showerroom" .showerrooms }}
+        {{ else if not .showerrooms }}
+          {{ $label = i18n "realestates.bathroom" .bathrooms }}
+        {{ end }}
+        <tr>
+          <th scope="row">{{ $label }}</th>
+          <td>
+            {{ with .bathrooms }}
+              {{ i18n "realestates.bathroom_with_count" (dict "count" .) }}
+            {{ end }}
+            {{ if and .bathrooms .showerrooms }}/{{ end }}
+            {{ with .showerrooms }}
+              {{ i18n "realestates.showerroom_with_count" (dict "count" .) }}
+            {{ end }}
+          </td>
+        </tr>
+      {{ end }}
+      {{ with .levels }}
         <tr>
           <th scope="row">{{ i18n "realestates.level" . }}</th>
-          <td>{{ i18n "realestates.level_with_value" (dict "Value" $levels) }}</td>
+          <td>{{ i18n "realestates.level_with_count" (dict "count" .) }}</td>
         </tr>
       {{ end }}
-      {{ with .Params.floor }}
+      {{ if isset . "floor" }}
+        {{ $floor := cond (eq .floor 0) (i18n "realestates.groundfloor") .floor }}
         <tr>
           <th scope="row">{{ i18n "realestates.floor" }}</th>
-          <td>{{ partial "func/PrepareHTML" . }}</td>
+          <td>{{ partial "func/PrepareHTML" $floor }}</td>
         </tr>
       {{ end }}
+    {{ end }}
     </tbody>
   </table>
 </section>
