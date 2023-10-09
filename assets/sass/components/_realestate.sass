@@ -16,11 +16,14 @@
         font-size: $small-font-size
         margin-bottom: 0
     .status
+        --bs-badge-bg: #{$gray-100}
         --bs-badge-color: #{$gray-800}
         --bs-badge-font-weight: #{$font-weight-normal}
         --bs-badge-padding-x: .75rem
         --bs-badge-padding-y: .5rem
         @extend .badge
+        background-color: var(--bs-badge-bg)
+        margin-bottom: 0
         pointer-events: none
         position: absolute
         right: .5rem
@@ -36,13 +39,6 @@
         justify-content: space-between
         margin-top: $paragraph-margin-bottom
     .reference
-        --bs-badge-color: #{$gray-800}
-        --bs-badge-font-weight: #{$font-weight-normal}
-        --bs-badge-padding-x: .75rem
-        --bs-badge-padding-y: .5rem
-        @extend .badge
-        background-color: $gray-200
         margin-bottom: 0
-        text-transform: uppercase
     .pricing
         margin-bottom: 0

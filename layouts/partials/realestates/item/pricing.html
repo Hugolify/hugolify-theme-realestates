@@ -1,4 +1,3 @@
-{{ $currency := $.Site.Params.currency | default "EUR" }}
 {{ with .Params.offer }}
   <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
     {{ with .sold }}
@@ -6,9 +5,13 @@
     {{ else }}
       <meta itemprop="availability" content="https://schema.org/InStock">
     {{ end }}
-    {{ with .price }}
-      <p class="pricing" itemprop="price" content="{{ . }}">{{ . | lang.FormatCurrency 2 $currency }}</p>
-      <meta itemprop="priceCurrency" content="{{ $currency }}">
+    {{ if not .hide_price }}
+      {{ with .price }}
+        {{ $currency := $.Site.Params.currency | default "EUR" }}
+        {{ $price := . | lang.FormatCurrency 2 $currency }}
+        <p class="pricing" itemprop="price" content="{{ . }}">{{ $price }}</p>
+        <meta itemprop="priceCurrency" content="{{ $currency }}">
+      {{ end }}
     {{ end }}
   </div>
 {{ end }}

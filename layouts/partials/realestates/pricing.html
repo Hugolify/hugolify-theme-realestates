@@ -1,11 +1,17 @@
 {{ with .Params.offer }}
-  {{ if not .sold }}
-    {{ with .price }}
-      {{ $currency := $.Site.Params.currency | default "EUR" }}
-      {{ $price := . | lang.FormatCurrency 2 $currency }}
-      <p class="pricing">{{ $price }}</p>
+  {{ if not .hide_price }}
+    {{ if not .sold }}
+      {{ with .price }}
+        {{ $currency := $.Site.Params.currency | default "EUR" }}
+        {{ $price := . | lang.FormatCurrency 2 $currency }}
+        <p class="pricing">{{ $price }}</p>
+      {{ end }}
+    {{ else }}
+      <p class="pricing">{{ i18n "realestates.sold" 1 }}</p>
     {{ end }}
   {{ else }}
-    <p class="pricing">{{ i18n "realestates.sold" 1 }}</p>
+    {{ with .status }}
+      <p class="pricing">{{ partial "func/PrepareHTML" . }}</p>
+    {{ end }}
   {{ end }}
 {{ end }}

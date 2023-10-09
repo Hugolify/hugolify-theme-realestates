@@ -63,6 +63,10 @@ realestates:
   reference_with_value: "Référence : {{ .Value }}"
   reference_with_value_short: "Réf. {{ .Value }}"
   reference_with_value_long: "Référence agence : {{ .Value }}"
+  related:
+    available:
+      one: Autre bien disponible
+      other: Autres biens disponibles
   room: 
     one: Pièce
     other: Pièces
@@ -81,6 +85,7 @@ realestates:
   sold:
     one: Bien vendu
     other: Biens vendus
+  sold_agency: Vendu par l’agence
   sold_by: 
     one: "Bien vendu par {{ .Person }}"
     other: "Biens vendus par {{ .Person }}"
