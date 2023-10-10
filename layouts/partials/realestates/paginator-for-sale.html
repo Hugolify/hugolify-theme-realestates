@@ -1,4 +1,5 @@
-{{- $pages := where (where site.RegularPages "Section" "realestates") "Params.offer.sold" "ne" true -}}
+{{- $realestates := where site.RegularPages "Section" "realestates" -}}
+{{- $pages := where $realestates "Params.offer.sold" "ne" true -}}
 {{- $paginator := (.Paginate $pages).Pages -}}
 {{ $atf := true }}
 {{ if partial "func/HasImageHero" . }}
