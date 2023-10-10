@@ -32,6 +32,17 @@
             th,
             td
                 width: 50%
+
+    .fees
+        --bs-alert-bg: #{$light}
+        @extend .alert
+        font-size: $small-font-size
+    .risk
+        font-size: px2rem(12)
+    .location + .risk
+        @include margin-bottom($global-spacing)
+        @include margin-top(- $global-spacing)
+        padding-top: $spacer
     
     .person 
         --bs-card-bg: #{$light}
