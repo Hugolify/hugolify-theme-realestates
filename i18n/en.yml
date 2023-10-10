@@ -41,6 +41,9 @@ realestates:
     other: "Properties offered for sale by {{ .Person }}"
   groundfloor: Groundfloor
   informations: Property Information
+  keyfeature:
+    one: Key feature
+    other: Key features
   latest: Latest real estates
   latest_person: Latest real estates by {{ .Person }}
   latest_section: Our {{ .Section }}’s latest real estates

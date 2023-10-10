@@ -41,6 +41,9 @@ realestates:
     other: "Biens proposés à la vente par {{ .Person }}"
   groundfloor: <abbr title="Rez-de-chaussée">RDC</abbr>
   informations: Informations sur le bien
+  keyfeature:
+    one: Principale caractéristique
+    other: Principales caractéristiques
   latest: Dernières annonces immobilières
   latest_person: Dernières annonces immobilières de {{ .Person }}
   latest_section: Dernières annonces immobilières en {{ .Section }}

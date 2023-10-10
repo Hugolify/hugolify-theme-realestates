@@ -1,0 +1,18 @@
+{{ with .Params.key_features }}
+  <div class="keyfeatures">
+    <h2>{{ i18n "realestates.keyfeature" . }}</h2>
+    <ul>
+      {{ range . }}
+        <li>
+          {{- with .icon -}}
+            <i class="icon icon-{{ . }}"></i>
+          {{- end -}}
+          <div>
+            <b>{{ partial "func/PrepareHTML" .title }}</b><br>
+            <span>{{ partial "func/PrepareHTML" .text }}</span>
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
