@@ -7,6 +7,8 @@
     --bs-card-spacer-y: 1.5rem
     @extend .card
     height: 100%
+    .related &
+        --bs-card-bg: #{$white}
     .media
         --bs-aspect-ratio: 70%
         background-color: $gray-200
@@ -36,9 +38,11 @@
     .offer
         align-items: baseline   
         display: flex
+        flex-wrap: wrap
         justify-content: space-between
         margin-top: $paragraph-margin-bottom
     .reference
         margin-bottom: 0
     .pricing
         margin-bottom: 0
+        white-space: nowrap
