@@ -1,4 +1,4 @@
-{{ $hasTypes := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_types") }}
+{{ $hasTypes := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_categories") }}
 {{ $hasPersons := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_persons") }}
 {{ if or $hasTypes $hasPersons }}
   <div class="filters offcanvas" tabindex="-1" id="realestatesFilters" aria-labelledby="realestatesFiltersLabel">

@@ -1,7 +1,7 @@
 <div class="content">
-  {{ $realestates_types := "realestates/filters/realestates_types.html" }}
-  {{ if templates.Exists ( printf "partials/%s" $realestates_types ) }}
-    {{ partial $realestates_types . }}
+  {{ $realestates_categories := "realestates/filters/realestates_categories.html" }}
+  {{ if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+    {{ partial $realestates_categories . }}
   {{ end }}
   {{ $realestates_persons := "realestates/filters/realestates_persons.html" }}
   {{ if templates.Exists ( printf "partials/%s" $realestates_persons ) }}

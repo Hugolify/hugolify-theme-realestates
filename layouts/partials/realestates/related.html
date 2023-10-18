@@ -6,9 +6,9 @@
 <!-- Exclude sold real estates -->
 {{- $realestates = where $realestates "Params.offer.sold" "ne" true -}}
 <!-- In same categories -->
-{{- if isset .Params "realestates_types" -}}
+{{- if isset .Params "realestates_categories" -}}
   {{ $realestates_save := $realestates -}}
-  {{ $realestates = where $realestates "Params.realestates_types" "eq" .Params.realestates_types -}}
+  {{ $realestates = where $realestates "Params.realestates_categories" "eq" .Params.realestates_categories -}}
   <!-- if not same real estates, get others -->
   {{- if eq (len $realestates) 0 -}}
     {{ $realestates = $realestates_save -}}

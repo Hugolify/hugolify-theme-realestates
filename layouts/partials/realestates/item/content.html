@@ -1,7 +1,7 @@
 <a href="{{ .Permalink }}" itemprop="url" class="content">
-  {{ $realestates_types := "realestates/item/realestates_types.html" }}
-  {{ if templates.Exists ( printf "partials/%s" $realestates_types ) }}
-    {{ partial $realestates_types . }}
+  {{ $realestates_categories := "realestates/item/realestates_categories.html" }}
+  {{ if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+    {{ partial $realestates_categories . }}
   {{ end }}
   {{ partial "commons/item/title" . }}
   {{ partial "realestates/item/metas" . }}
