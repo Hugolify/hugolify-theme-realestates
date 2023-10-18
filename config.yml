@@ -19,9 +19,6 @@ params:
       desktop: "416x291"
       mobile: "300x210"
       scrollsnap: "240x168"
-    image:
-      desktop: "850x"
-      mobile: "300x"
 
 # Default
 permalinks:
