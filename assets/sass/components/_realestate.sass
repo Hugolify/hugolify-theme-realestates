@@ -36,6 +36,13 @@
         font-size: 1.25rem
     .metas
         color: $text-muted
+        @include media-breakpoint-down(md)
+            display: flex
+            p:not(:first-child)
+                margin-left: .5rem
+                &::before
+                    content: '—'
+                    margin-right: .5rem
     .offer
         align-items: baseline   
         display: flex

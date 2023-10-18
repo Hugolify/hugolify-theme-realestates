@@ -9,6 +9,22 @@
     .location
         @include margin-bottom($global-spacing)
     .metas
+        @include media-breakpoint-down(md)
+            align-items: baseline
+            display: flex
+            flex-wrap: wrap
+            .reference
+                flex-basis: 100%
+                margin-bottom: .5rem
+            .pricing
+                flex-basis: 100%
+                margin-top: .5rem
+            .area,
+            .rooms
+                margin-left: .5rem
+                &::before
+                    content: '—'
+                    margin-right: .5rem
         .pricing
             font-size: 1.25rem
             font-weight: $font-weight-bold
@@ -19,6 +35,12 @@
     .informations
         table
             margin-bottom: 0
+            @include media-breakpoint-down(md)
+                font-size: px2rem(14)
+        th
+            padding-left: 0
+        td
+            padding-right: 0
         @include media-breakpoint-up(md)
             table
                 display: flex
