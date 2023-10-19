@@ -39,11 +39,9 @@
       {{ end }}
     {{ end }}
       {{ with .Params.offer.price }}
-        {{ $currency := $.Site.Params.currency | default "EUR" }}
-        {{ $price := . | lang.FormatCurrency 2 $currency }}
         <tr>
           <th scope="row">{{ i18n "realestates.pricing" }}</th>
-          <td>{{ $price }}</td>
+          <td>{{ partial "func/GetHumanPrice" . }}</td>
         </tr>
       {{ end }}
     </tbody>

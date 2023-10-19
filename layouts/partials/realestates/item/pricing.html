@@ -8,8 +8,7 @@
     {{ if not .hide_price }}
       {{ with .price }}
         {{ $currency := $.Site.Params.currency | default "EUR" }}
-        {{ $price := . | lang.FormatCurrency 2 $currency }}
-        <p class="pricing" itemprop="price" content="{{ . }}">{{ $price }}</p>
+        <p class="pricing" itemprop="price" content="{{ . }}">{{ partial "func/GetHumanPrice" . }}</p>
         <meta itemprop="priceCurrency" content="{{ $currency }}">
       {{ end }}
     {{ end }}

@@ -1,0 +1,10 @@
+{{ $price := . }}
+
+{{ if $price }}
+    {{ $currency := site.Params.currency | default "EUR" }}
+    {{ $price = $price | lang.FormatCurrency 2 $currency }}
+    {{ $price = replace $price " €" " €" }}
+    {{ $price = replace $price ",00" "" }}
+{{ end }}
+
+{{ return $price }}
