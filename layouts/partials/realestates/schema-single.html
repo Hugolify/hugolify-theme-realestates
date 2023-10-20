@@ -2,43 +2,113 @@
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": {{ .Title }},
+    "name": {{ .Title | plainify }},
+    "url": {{ .Permalink }},
 
-    {{ with .Params.image }}
-      "thumbnailUrl": {{ . | absURL }},
-    {{ end }}
+  {{- with .Params.image }}
+    "thumbnailUrl": {{ .src | absURL }},
+  {{- end -}}
 
-    {{ with .Date }}
-      "datePublished": {{ . }},
-    {{ end }}
+  {{- with .Date }}
+    "releaseDate": {{ . }},
+  {{- end -}}
 
-    {{ with .Params.reference }}
-      "sku": {{ . | plainify }},
-    {{ end }}
+  {{- with .Params.reference }}
+    "sku": {{ . | plainify }},
+  {{ end -}}
 
-    {{ with .Params.offer }}
-      "offers": {
-        "@type": "Offer",
-      
-        {{ with .sold }}
-          "availability": "https://schema.org/OutOfStock",
-        {{ else }}
-          "availability": "https://schema.org/InStock",
-        {{ end }}
+  {{- with .Params.realestates_categories }}
+    "category": {{ . | plainify }},
+  {{ end -}}
 
-        {{ with .price }}
-          "price": {{ . | plainify }},
-        {{ end }}
+  {{- with .Params.offer }}
+    "offers": {
+      "@type": "Offer",
+      "businessFunction": "sell",
+    
+      {{- with .sold }}
+      "availability": "https://schema.org/OutOfStock",
+      {{ else }}
+      "availability": "https://schema.org/InStock",
+      {{- end -}}
 
-        {{ $currency := $.Site.Params.currency | default "EUR" }}
-        {{ with $currency }}
-          "priceCurrency": {{ . }}
-        {{ end }}
-      },
-    {{ end }}
+      {{- with .price }}
+      "price": {{ . | plainify }},
+      {{- end -}}
 
-    {{ with .Content }}
-      "description": {{ . | plainify | safeHTML }},
-    {{ end }}
+      {{- $currency := $.Site.Params.currency | default "EUR" -}}
+      {{- with $currency }}
+      "priceCurrency": {{ . }}
+      {{- end }}
+    },
+  {{ end -}}
+
+  {{- with .Content }}
+    "description": {{ . | plainify | safeHTML }},
+  {{ end }}
   }
 </script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "House",
+    "name": {{ .Title | plainify }},
+    "url": {{ .Permalink }},
+  
+  {{- with .Params.address }}
+    "address": {
+      "@type": "PostalAddress",
+      {{- with .country }}
+      "addressCountry": {{ . | plainify }},
+      {{- end -}}
+      {{- with .city }}
+      "addressLocality": {{ . | plainify }},
+      {{- end -}}
+      {{- with .zipcode }}
+      "postalCode": {{ . | plainify }}
+      {{- end -}}
+    },
+  {{- end -}}
+
+  {{- with .Params.image }}
+    "image": {{ .src | absURL }},
+  {{- end -}}
+
+  {{- with .Params.reference }}
+    "identifier": {{ . | plainify }},
+  {{ end -}}
+
+  {{- with .Params.informations }}
+    {{- with .rooms }}
+    "numberOfRooms": {{ . | plainify }},
+    {{- end -}}
+    {{- with .bedrooms }}
+    "numberOfBedrooms": {{ . | plainify }},
+    {{- end -}}
+    {{- with .bathrooms }}
+    "numberOfFullBathrooms": {{ . | plainify }},
+    {{- end -}}
+    {{- with .showerrooms }}
+    "numberOfPartialBathrooms": {{ . | plainify }},
+    {{- end -}}
+    {{- with .floor }}
+    "floorLevel": {{ . | plainify }},
+    {{- end -}}
+    {{- with .area }}
+    "floorSize": {{ . | plainify }},
+    {{- end -}}
+    {{- with .year }}
+    "yearBuilt": {{ . | plainify }},
+    {{- end -}}
+  {{- end -}}
+
+  {{- with .Params.realestates_categories }}
+    "accommodationCategory": {{ . | plainify }},
+  {{- end -}}
+
+  {{- with .Content }}
+    "description": {{ . | plainify | safeHTML }},
+  {{ end }}
+  }
+</script>
+
