@@ -1,7 +1,7 @@
 realestates:
   all: Toutes les annonces immobilières
   area: Surface
-  area_with_value: "{{ .Value }} {{ .Unit }}"
+  area_with_value: '{{ .Value }} {{ .Unit }}'
   bathroom_showerroom:
     one: Salle de bain / d’eau
     other: Salles de bain / d’eau
@@ -9,36 +9,36 @@ realestates:
     one: Salle de bain
     other: Salles de bain
   bathroom_with_count:
-    one: "{{ .count }} salle de bain"
-    other: "{{ .count }} salles de bain"
-  bedroom: 
+    one: '{{ .count }} salle de bain'
+    other: '{{ .count }} salles de bain'
+  bedroom:
     one: Chambre
     other: Chambres
   bedroom_with_count:
-    one: "{{ .count }} chambre"
-    other: "{{ .count }} chambres"
+    one: '{{ .count }} chambre'
+    other: '{{ .count }} chambres'
   diagnostic:
     dpe:
       hight: Logement très performant
       low: Logement extrêmement consommateur d’énergie
-      value: "{{ .Value }} kWh/m<sup>2</sup>.an"
+      value: '{{ .Value }} kWh/m<sup>2</sup>.an'
     ges:
       hight: Peu d’emission de CO2
       low: Emissions de CO2 très importantes
-      value: "{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.an"
+      value: '{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.an'
     title: Diagnostic de performance énergétique
   discover: Découvrir l’annonce immobilière
   district: Secteur
   elevator: Ascenseur
   field: Terrain
-  field_with_value: "{{ .Value }} {{ .Unit }}"
+  field_with_value: '{{ .Value }} {{ .Unit }}'
   floor: Étage
-  for_sale: 
+  for_sale:
     one: Bien proposé à la vente
     other: Biens proposés à la vente
-  for_sale_by: 
-    one: "Bien proposé à la vente par {{ .Person }}"
-    other: "Biens proposés à la vente par {{ .Person }}"
+  for_sale_by:
+    one: 'Bien proposé à la vente par {{ .Person }}'
+    other: 'Biens proposés à la vente par {{ .Person }}'
   groundfloor: <abbr title="Rez-de-chaussée">RDC</abbr>
   informations: Informations sur le bien
   keyfeature:
@@ -47,35 +47,35 @@ realestates:
   latest: Dernières annonces immobilières
   latest_person: Dernières annonces immobilières de {{ .Person }}
   latest_section: Dernières annonces immobilières en {{ .Section }}
-  level: 
+  level:
     one: Niveau
     other: Niveaux
   level_with_count:
-    one: "{{ .count }} étage"
-    other: "{{ .count }} étages"
+    one: '{{ .count }} étage'
+    other: '{{ .count }} étages'
   list: Liste des annonces immobilières de la personne concernée
   list_person: Liste des annonces immobilières de {{ .Person }}
   location: Emplacement du bien
   more: Découvrir plus d’annonces immobilières
   more_person: Découvrir plus d’annonces immobilières de {{ .Person }}
   pricing: Prix
-  pricing_with_value: "Prix : {{ .Value }}"
+  pricing_with_value: 'Prix : {{ .Value }}'
   reference: Référence
   reference_short: Réf.
   reference_long: Référence agence
-  reference_with_value: "Référence : {{ .Value }}"
-  reference_with_value_short: "Réf. {{ .Value }}"
-  reference_with_value_long: "Référence agence : {{ .Value }}"
+  reference_with_value: 'Référence : {{ .Value }}'
+  reference_with_value_short: 'Réf. {{ .Value }}'
+  reference_with_value_long: 'Référence agence : {{ .Value }}'
   related:
     available:
       one: Autre bien disponible
       other: Autres biens disponibles
-  room: 
+  room:
     one: Pièce
     other: Pièces
   room_with_count:
-    one: "{{ .count }} pièce"
-    other: "{{ .count }} pièces"
+    one: '{{ .count }} pièce'
+    other: '{{ .count }} pièces'
   sale:
     one: Vente
     other: Ventes
@@ -83,20 +83,20 @@ realestates:
     one: Salle d’eau
     other: Salles d’eau
   showerroom_with_count:
-    one: "{{ .count }} salle d’eau"
-    other: "{{ .count }} salles d’eau"
+    one: '{{ .count }} salle d’eau'
+    other: '{{ .count }} salles d’eau'
   sold:
     one: Bien vendu
     other: Biens vendus
   sold_agency: Vendu par l’agence
-  sold_by: 
-    one: "Bien vendu par {{ .Person }}"
-    other: "Biens vendus par {{ .Person }}"
+  sold_by:
+    one: 'Bien vendu par {{ .Person }}'
+    other: 'Biens vendus par {{ .Person }}'
   title:
     one: Annonce immobilière
     other: Annonces immobilières
   title_person: Annonces immobilières de {{ .Person }}
-  visit: 
+  visit:
     one: Visite
     other: Visites
   year_construction: Année de construction

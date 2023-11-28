@@ -1,7 +1,7 @@
 realestates:
   all: All real estates
   area: Area
-  area_with_value: "{{ .Value }} {{ .Unit }}"
+  area_with_value: '{{ .Value }} {{ .Unit }}'
   bathroom_showerroom:
     one: Bath / shower room
     other: Bath / shower rooms
@@ -9,36 +9,36 @@ realestates:
     one: Bath room
     other: Bath rooms
   bathroom_with_count:
-    one: "{{ .count }} bathroom"
-    other: "{{ .count }} bathrooms"
-  bedroom: 
+    one: '{{ .count }} bathroom'
+    other: '{{ .count }} bathrooms'
+  bedroom:
     one: Bedroom
     other: Bedrooms
   bedroom_with_count:
-    one: "{{ .count }} bedroom"
-    other: "{{ .count }} bedrooms"
+    one: '{{ .count }} bedroom'
+    other: '{{ .count }} bedrooms'
   diagnostic:
     dpe:
       hight: Very efficient accommodation
       low: Extremely energy-intensive housing
-      value: "{{ .Value }} kWh/m<sup>2</sup>.year"
+      value: '{{ .Value }} kWh/m<sup>2</sup>.year'
     ges:
       hight: Low CO2 emissions
       low: Very significant CO2 emissions
-      value: "{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.year"
+      value: '{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.year'
     title: Energy performance diagnostic
   discover: Discover real estate
   district: District
   elevator: Elevator
   field: Field
-  field_with_value: "{{ .Value }} {{ .Unit }}"
+  field_with_value: '{{ .Value }} {{ .Unit }}'
   floor: Floor
-  for_sale: 
+  for_sale:
     one: Property offered for sale
     other: Properties offered for sale
-  for_sale_by: 
-    one: "Property offered for sale by {{ .Person }}"
-    other: "Properties offered for sale by {{ .Person }}"
+  for_sale_by:
+    one: 'Property offered for sale by {{ .Person }}'
+    other: 'Properties offered for sale by {{ .Person }}'
   groundfloor: Groundfloor
   informations: Property Information
   keyfeature:
@@ -47,35 +47,35 @@ realestates:
   latest: Latest real estates
   latest_person: Latest real estates by {{ .Person }}
   latest_section: Our {{ .Section }}’s latest real estates
-  level: 
+  level:
     one: Level
     other: Levels
   level_with_value:
-    one: "{{ .Value }} level"
-    other: "{{ .Value }} levels"
+    one: '{{ .Value }} level'
+    other: '{{ .Value }} levels'
   list: List of real estates by the person concerned
   list_person: List of {{ .Person }}’s real estates
   location: Location of the property
   more: Discover more real estates
   more_person: Discover more real estates by {{ .Person }}
   pricing: Pricing
-  pricing_with_value: "Price : {{ .Value }}"
+  pricing_with_value: 'Price : {{ .Value }}'
   reference: Reference
   reference_short: Ref.
   reference_long: Agency reference
-  reference_with_value: "Reference: {{ .Value }}"
-  reference_with_value_short: "Ref. {{ .Value }}"
-  reference_with_value_long: "Agency reference: {{ .Value }}"
+  reference_with_value: 'Reference: {{ .Value }}'
+  reference_with_value_short: 'Ref. {{ .Value }}'
+  reference_with_value_long: 'Agency reference: {{ .Value }}'
   related:
     available:
       one: Autre property disponible
       other: Other properties available
-  room: 
+  room:
     one: Room
     other: Rooms
   room_with_count:
-    one: "{{ .count }} room"
-    other: "{{ .count }} rooms"
+    one: '{{ .count }} room'
+    other: '{{ .count }} rooms'
   sale:
     one: Sale
     other: Sales
@@ -83,19 +83,19 @@ realestates:
     one: Shower room
     other: Shower rooms
   showerrooms_with_count:
-    one: "{{ .count }} shower room"
-    other: "{{ .count }} shower rooms"
+    one: '{{ .count }} shower room'
+    other: '{{ .count }} shower rooms'
   sold:
     one: Property sold
     other: Properties sold
   sold_agency: Sold by the agency
-  sold_by: 
-    one: "Property sold by {{ .Person }}"
-    other: "Properties sold by {{ .Person }}"
+  sold_by:
+    one: 'Property sold by {{ .Person }}'
+    other: 'Properties sold by {{ .Person }}'
   title:
     one: Real estate
     other: Real estates
-  title_person: "{{ .Person }}’s real estates"
+  title_person: '{{ .Person }}’s real estates'
   visit:
     one: Visit
     other: Visits

@@ -16,9 +16,9 @@ module:
 params:
   realestates:
     thumbnail:
-      desktop: "416x291"
-      mobile: "300x210"
-      scrollsnap: "240x168"
+      desktop: '416x291'
+      mobile: '300x210'
+      scrollsnap: '240x168'
 
 # Default
 permalinks:
