@@ -1,17 +1,3 @@
 {{ with .Params.address }}
-  {{ if or .street .zipcode .city .country }}
-    <address>
-      <div>
-        {{ with .street }}
-          <p>{{ partial "func/PrepareHTML" . }}</p>
-        {{ end }}
-        {{  if or .zipcode .city }}
-          <p>{{ partial "func/PrepareHTML" .zipcode }} {{ partial "func/PrepareHTML" .city }}</p>
-        {{ end }}
-        {{ with .country }}
-          <p>{{ partial "func/PrepareHTML" . }}</p>
-        {{ end }}
-      </div>
-    </address>
-  {{ end }}
+  {{ partial "commons/address" (dict "address" . "card" true) }}
 {{ end }}
