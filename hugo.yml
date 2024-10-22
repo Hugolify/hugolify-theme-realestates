@@ -16,7 +16,8 @@ module:
 params:
   admin:
     collections:
-      realestates: true
+      realestates:
+        enable: true
   realestates:
     thumbnail:
       desktop: '416x291'
