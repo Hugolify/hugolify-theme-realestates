@@ -2,6 +2,7 @@ realestates:
   all: All real estates
   area: Area
   area_with_value: '{{ .Value }} {{ .Unit }}'
+  balcony: Balcony
   bathroom_showerroom:
     one: Bath / shower room
     other: Bath / shower rooms
@@ -17,6 +18,7 @@ realestates:
   bedroom_with_count:
     one: '{{ .count }} bedroom'
     other: '{{ .count }} bedrooms'
+  cave: Cave
   diagnostic:
     dpe:
       hight: Very efficient accommodation
@@ -39,6 +41,7 @@ realestates:
   for_sale_by:
     one: 'Property offered for sale by {{ .Person }}'
     other: 'Properties offered for sale by {{ .Person }}'
+  garage: Garage
   groundfloor: Groundfloor
   informations: Property Information
   keyfeature:
@@ -58,6 +61,8 @@ realestates:
   location: Location of the property
   more: Discover more real estates
   more_person: Discover more real estates by {{ .Person }}
+  outbuilding: Outbuilding
+  parking: Parking
   pricing: Pricing
   pricing_with_value: 'Price : {{ .Value }}'
   reference: Reference
@@ -92,6 +97,8 @@ realestates:
   sold_by:
     one: 'Property sold by {{ .Person }}'
     other: 'Properties sold by {{ .Person }}'
+  swimmingpool: Piscine
+  terrace: Terrace
   title:
     one: Real estate
     other: Real estates

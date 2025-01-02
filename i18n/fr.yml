@@ -2,6 +2,7 @@ realestates:
   all: Toutes les annonces immobilières
   area: Surface
   area_with_value: '{{ .Value }} {{ .Unit }}'
+  balcony: Balcon
   bathroom_showerroom:
     one: Salle de bain / d’eau
     other: Salles de bain / d’eau
@@ -17,6 +18,7 @@ realestates:
   bedroom_with_count:
     one: '{{ .count }} chambre'
     other: '{{ .count }} chambres'
+  cave: Cave
   diagnostic:
     dpe:
       hight: Logement très performant
@@ -39,6 +41,7 @@ realestates:
   for_sale_by:
     one: 'Bien proposé à la vente par {{ .Person }}'
     other: 'Biens proposés à la vente par {{ .Person }}'
+  garage: Garage
   groundfloor: <abbr title="Rez-de-chaussée">RDC</abbr>
   informations: Informations sur le bien
   keyfeature:
@@ -58,6 +61,8 @@ realestates:
   location: Emplacement du bien
   more: Découvrir plus d’annonces immobilières
   more_person: Découvrir plus d’annonces immobilières de {{ .Person }}
+  outbuilding: Dépendance
+  parking: Parking
   pricing: Prix
   pricing_with_value: 'Prix : {{ .Value }}'
   reference: Référence
@@ -92,6 +97,8 @@ realestates:
   sold_by:
     one: 'Bien vendu par {{ .Person }}'
     other: 'Biens vendus par {{ .Person }}'
+  swimmingpool: Piscine
+  terrace: Terrasse
   title:
     one: Annonce immobilière
     other: Annonces immobilières

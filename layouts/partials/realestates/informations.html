@@ -38,12 +38,16 @@
         </tr>
       {{ end }}
     {{ end }}
-      {{ with .Params.offer.price }}
+    {{ with .Params.offer }}
+      {{- if not .sold }}
+      {{- with .price }}
         <tr>
           <th scope="row">{{ i18n "realestates.pricing" }}</th>
           <td>{{ partial "func/GetHumanPrice" . }}</td>
         </tr>
-      {{ end }}
+      {{ end -}}
+      {{ end -}}
+    {{ end }}
     </tbody>
     <tbody>
     {{ with .Params.informations }}
@@ -59,16 +63,16 @@
           <td>{{ i18n "realestates.bedroom_with_count" (dict "count" .) }}</td>
         </tr>
       {{ end }}
-      {{ if or .bathrooms .showerrooms }}
-        {{ $bathrooms := .bathrooms | default 0 }}
-        {{ $showerrooms := .showerrooms | default 0 }}
-        {{ $count := add $bathrooms $showerrooms }}
-        {{ $label := i18n "realestates.bathroom_showerroom" $count }}
-        {{ if not .bathrooms }}
-          {{ $label = i18n "realestates.showerroom" .showerrooms }}
-        {{ else if not .showerrooms }}
-          {{ $label = i18n "realestates.bathroom" .bathrooms }}
-        {{ end }}
+      {{- if or .bathrooms .showerrooms -}}
+        {{- $bathrooms := .bathrooms | default 0 -}}
+        {{- $showerrooms := .showerrooms | default 0 -}}
+        {{- $count := add $bathrooms $showerrooms -}}
+        {{- $label := i18n "realestates.bathroom_showerroom" $count -}}
+        {{- if not .bathrooms -}}
+          {{- $label = i18n "realestates.showerroom" .showerrooms -}}
+        {{- else if not .showerrooms -}}
+          {{- $label = i18n "realestates.bathroom" .bathrooms -}}
+        {{- end -}}
         <tr>
           <th scope="row">{{ $label }}</th>
           <td>
@@ -82,6 +86,12 @@
           </td>
         </tr>
       {{ end }}
+      {{ with .wc }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.wc" . }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
       {{ with .levels }}
         <tr>
           <th scope="row">{{ i18n "realestates.level" . }}</th>
@@ -93,6 +103,54 @@
         <tr>
           <th scope="row">{{ i18n "realestates.floor" }}</th>
           <td>{{ partial "func/PrepareHTML" $floor }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_elevator }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.elevator" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_balcony }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.balcony" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_terrace }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.terrace" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_swimmingpool }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.swimmingpool" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_outbuilding }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.outbuilding" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_cave }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.cave" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_garage }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.garage" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_parking }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.parking" }}</th>
+          <td>{{ i18n "yes" }}</td>
         </tr>
       {{ end }}
     {{ end }}
