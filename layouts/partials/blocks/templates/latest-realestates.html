@@ -1,36 +1,32 @@
 {{- $sold := .sold | default false -}}
-{{- $atf := false -}}
-{{- if .first -}}
-  {{- $atf = true -}}
+{{- $section := "realestates" -}}
+{{- $layout := .layout | default "grid" -}}
+{{- $atf := cond .first true false -}}
+{{- $count := 3 -}}
+{{- with .count -}}
+  {{- $count = . -}}
 {{- end -}}
 
-<section class="block-latest{{ with .background }} block-bg{{ end }}"{{ partial "func/SetAnim" (dict "element" "block") }}>
+{{- $items := where site.RegularPages "Section" $section -}}
+{{- $items = where $items "Params.offer.sold" $sold -}}
+{{- $items = first $count ( $items.ByDate.Reverse ) -}}
+
+{{- if $items }}
+<section class="block-latest block-latest-{{ $layout }} {{- with .background }} block-bg{{ end }}" {{- partial "func/SetAnim" (dict "element" "block") }}>
   <div class="container">
 
     {{ partial "blocks/heading" . }}
 
-    {{- $count := 3 -}}
-    {{- with .count -}}
-      {{- $count = . -}}
-    {{- end -}}
-    {{- $items := where site.RegularPages "Section" "realestates" -}}
-    {{- if $sold -}}
-      {{- $items = where $items "Params.offer.sold" true -}}
-    {{- else -}}
-      {{- $items = where $items "Params.offer.sold" false -}}
-    {{- end -}}
-    {{- with first $count ( ($items).ByDate.Reverse ) }}
-      {{ partial "realestates/items" (dict "pages" . "scrollsnap" true "abovethefold" $atf) }}
+    {{- with $items }}
+      {{- if eq $layout "list" }}
+        {{ partial "blocks/templates/latest/list.html" . }}
+      {{- else -}}
+        {{ partial "blocks/templates/latest/grid.html" (dict "section" $section "items" . "atf" $atf) }}
+      {{ end -}}
     {{ end -}}
 
-    {{- $show_button := .show_more | default true -}}
-    {{- if $show_button -}}
-      {{- $index := site.GetPage "/realestates" -}}
-      {{ with $index }}
-        <div class="bottom">
-          <a href="{{ .Permalink }}" class="btn">{{ i18n "realestates.more" }}</a>
-        </div>
-      {{ end }}
-    {{- end -}}
+    {{- partial "blocks/templates/selected/more" (dict "section" $section "show_more" .show_more) -}}
+
   </div>
 </section>
+{{- end -}}
