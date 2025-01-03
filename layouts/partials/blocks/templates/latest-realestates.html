@@ -1,4 +1,5 @@
 {{- $sold := .sold | default false -}}
+{{- $type := .realestates_types | default "sale" -}}
 {{- $section := "realestates" -}}
 {{- $layout := .layout | default "grid" -}}
 {{- $atf := cond .first true false -}}
@@ -8,6 +9,7 @@
 {{- end -}}
 
 {{- $items := where site.RegularPages "Section" $section -}}
+{{- $items = where $items "Params.realestates_types" $type -}}
 {{- $items = where $items "Params.offer.sold" $sold -}}
 {{- $items = first $count ( $items.ByDate.Reverse ) -}}
 
