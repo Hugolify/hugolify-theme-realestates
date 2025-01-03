@@ -1,11 +1,17 @@
+{{- $type := .Params.realestates_types | default "sale" -}}
 {{ with .Params.offer }}
   {{ if not .hide_price }}
     {{ if not .sold }}
       {{ with .price }}
-        <p class="pricing">{{ partial "func/GetHumanPrice" . }}</p>
+        <p class="pricing">
+          {{- partial "func/GetHumanPrice" . -}}
+          {{- if eq $type "rent" -}}
+           / {{ i18n "realestates.month" | lower }}
+          {{- end -}}
+        </p>
       {{ end }}
     {{ else }}
-      <p class="pricing">{{ i18n "realestates.sold" 1 }}</p>
+      <p class="pricing">{{ cond (eq $type "sale") (i18n "realestates.sold" 1) (i18n "realestates.rent" 1) }}</p>
     {{ end }}
   {{ else }}
     {{ with .status }}

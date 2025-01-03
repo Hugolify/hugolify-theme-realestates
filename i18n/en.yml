@@ -19,6 +19,7 @@ realestates:
     one: '{{ .count }} bedroom'
     other: '{{ .count }} bedrooms'
   cave: Cave
+  day: Day
   diagnostic:
     dpe:
       hight: Very efficient accommodation
@@ -59,6 +60,7 @@ realestates:
   list: List of real estates by the person concerned
   list_person: List of {{ .Person }}’s real estates
   location: Location of the property
+  month: Month
   more: Discover more real estates
   more_person: Discover more real estates by {{ .Person }}
   outbuilding: Outbuilding
@@ -75,6 +77,10 @@ realestates:
     available:
       one: Autre property disponible
       other: Other properties available
+  rent:
+    one: Property rent
+    other: Properties rent
+  rent_agency: Rent by the agency
   room:
     one: Room
     other: Rooms
@@ -108,4 +114,6 @@ realestates:
   visit:
     one: Visit
     other: Visits
+  week: Week
+  year: Year
   year_construction: Year of construction

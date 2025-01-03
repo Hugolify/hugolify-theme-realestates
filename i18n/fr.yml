@@ -19,6 +19,7 @@ realestates:
     one: '{{ .count }} chambre'
     other: '{{ .count }} chambres'
   cave: Cave
+  day: Jour
   diagnostic:
     dpe:
       hight: Logement très performant
@@ -59,6 +60,7 @@ realestates:
   list: Liste des annonces immobilières de la personne concernée
   list_person: Liste des annonces immobilières de {{ .Person }}
   location: Emplacement du bien
+  month: Mois
   more: Découvrir plus d’annonces immobilières
   more_person: Découvrir plus d’annonces immobilières de {{ .Person }}
   outbuilding: Dépendance
@@ -75,6 +77,10 @@ realestates:
     available:
       one: Autre bien disponible
       other: Autres biens disponibles
+  rent:
+    one: Bien loué
+    other: Biens loués
+  rent_agency: Loué par l’agence
   room:
     one: Pièce
     other: Pièces
@@ -108,4 +114,6 @@ realestates:
   visit:
     one: Visite
     other: Visites
+  week: Semaine
+  year: Année
   year_construction: Année de construction

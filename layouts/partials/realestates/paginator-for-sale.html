@@ -1,9 +1,7 @@
 {{- $realestates := where site.RegularPages "Section" "realestates" -}}
-{{- $pages := where $realestates "Params.offer.sold" "ne" true -}}
-{{- $paginator := (.Paginate $pages).Pages -}}
-{{ $atf := true }}
-{{ if partial "func/HasImageHero" . }}
-  {{ $atf = false }}
-{{ end }}
+{{- $realestates = where $realestates "Params.realestates_types" "eq" "sale" -}}
+{{- $realestates = where $realestates "Params.offer.sold" "ne" true -}}
+{{- $paginator := (.Paginate $realestates).Pages -}}
+{{- $atf := cond (partial "func/HasImageHero" .) false true -}}
 {{ partial "realestates/items" (dict "pages" $paginator "abovethefold" $atf) }}
 {{ partial "nav/pagination.html" . }}

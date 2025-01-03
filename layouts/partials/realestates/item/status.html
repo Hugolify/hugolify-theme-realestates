@@ -1,6 +1,13 @@
+{{- $type := .Params.realestates_types | default "sale" -}}
 {{ with .Params.offer }}
-  {{ if .sold }}
-    <p class="status">{{ i18n "realestates.sold_agency" }}</p>
+  {{- if .sold -}}
+    <p class="status">
+      {{- if eq $type "rent" -}}
+        {{ i18n "realestates.rent_agency" }}
+      {{- else -}}
+        {{ i18n "realestates.sold_agency" }}
+      {{ end -}}
+    </p>
   {{ else }}
     {{ with .status }}
       <p class="status">{{ partial "func/PrepareHTML" . }}</p>

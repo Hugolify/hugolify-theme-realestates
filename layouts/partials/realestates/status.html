@@ -1,6 +1,8 @@
 {{ with .Params.offer }}
   {{ if .sold }}
     <p class="status">{{ i18n "realestates.sold_agency" }}</p>
+  {{ else if .rent }}
+    <p class="status">{{ i18n "realestates.rent_agency" }}</p>
   {{ else }}
     {{ with .status }}
       <p class="status">{{ partial "func/PrepareHTML" . }}</p>
