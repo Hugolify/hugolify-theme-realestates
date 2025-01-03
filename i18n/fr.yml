@@ -90,6 +90,7 @@ realestates:
   showerroom_with_count:
     one: '{{ .count }} salle d’eau'
     other: '{{ .count }} salles d’eau'
+  sign: Signature en cours
   sold:
     one: Bien vendu
     other: Biens vendus
@@ -103,6 +104,7 @@ realestates:
     one: Annonce immobilière
     other: Annonces immobilières
   title_person: Annonces immobilières de {{ .Person }}
+  under_offer: Sous offre
   visit:
     one: Visite
     other: Visites
