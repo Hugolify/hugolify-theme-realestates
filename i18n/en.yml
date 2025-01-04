@@ -63,6 +63,7 @@ realestates:
   month: Month
   more: Discover more real estates
   more_person: Discover more real estates by {{ .Person }}
+  no_items: No property
   outbuilding: Outbuilding
   parking: Parking
   pricing: Pricing

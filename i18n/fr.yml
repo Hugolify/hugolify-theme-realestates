@@ -63,6 +63,7 @@ realestates:
   month: Mois
   more: Découvrir plus d’annonces immobilières
   more_person: Découvrir plus d’annonces immobilières de {{ .Person }}
+  no_items: Aucun bien
   outbuilding: Dépendance
   parking: Parking
   pricing: Prix
