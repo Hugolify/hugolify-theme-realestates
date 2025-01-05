@@ -33,6 +33,7 @@ realestates:
   discover: Discover real estate
   district: District
   elevator: Elevator
+  exposure: Exposure
   field: Field
   field_with_value: '{{ .Value }} {{ .Unit }}'
   floor: Floor
@@ -115,6 +116,8 @@ realestates:
   visit:
     one: Visit
     other: Visits
+  wc: WC
+  wc_with_count: '{{ .count }} wc'
   week: Week
   year: Year
   year_construction: Year of construction

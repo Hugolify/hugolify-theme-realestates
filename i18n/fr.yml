@@ -33,6 +33,7 @@ realestates:
   discover: Découvrir l’annonce immobilière
   district: Secteur
   elevator: Ascenseur
+  exposure: Exposition
   field: Terrain
   field_with_value: '{{ .Value }} {{ .Unit }}'
   floor: Étage
@@ -115,6 +116,8 @@ realestates:
   visit:
     one: Visite
     other: Visites
+  wc: WC
+  wc_with_count: '{{ .count }} wc'
   week: Semaine
   year: Année
   year_construction: Année de construction
