@@ -1,1 +1,8 @@
-{{ partial "commons/heading" . }}
+{{- if not (partial "func/HasHero" .) -}}
+  <header class="heading" {{- partial "func/SetAnim" (dict "element" "heading") }}>
+    {{ partial "realestates/district" . }}
+    {{- with .Title -}}
+      <h1>{{ partial "func/PrepareHTML" . }}</h1>
+    {{- end -}}
+  </header>
+{{- end -}}
