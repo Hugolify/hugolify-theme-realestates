@@ -1,20 +1,22 @@
 {{- $value := .value | default false -}}
 {{- $type := .type | default "dpe" -}}
-
-{{ if $value }}
-  {{ $func := printf "func/Get%sGrade" (upper $type) }}
-  {{ if templates.Exists (printf "partials/%s" $func) }}
-    {{ $grade := partial $func $value }}
-    <div class="diagram {{ $type }} {{ $type }}-{{ lower $grade }}">
-      {{- $i18nHight := printf "realestates.diagnostic.%s.hight" (lower $type) -}}
-      {{- $i18nLow := printf "realestates.diagnostic.%s.low" (lower $type) -}}
-      {{- $i18nValue := printf "realestates.diagnostic.%s.value" (lower $type) -}}
-      <p aria-hidden="true">{{ i18n $i18nHight }}</p>
-      <div>
-        <img src="/images/diagramme-{{ $type }}.svg" alt="" width="143" height="150" loading="lazy">
-        <p class="value">{{ safeHTML (i18n $i18nValue (dict "Value" $value)) }}</p>
-      </div>
-      <p aria-hidden="true">{{ i18n $i18nLow }}</p>
+{{- $func := printf "func/Get%sGrade" (upper $type) -}}
+{{- if templates.Exists (printf "partials/%s" $func) -}}
+  {{- $grade := false -}}
+  {{- with $value -}}
+    {{- $grade = partial $func . -}}
+  {{- end -}}
+  {{- $i18nHight := printf "realestates.diagnostic.%s.hight" (lower $type) -}}
+  {{- $i18nLow := printf "realestates.diagnostic.%s.low" (lower $type) -}}
+  {{- $i18nValue := printf "realestates.diagnostic.%s.value" (lower $type) -}}
+  <div class="diagram {{ $type }} {{- with $grade }} {{ $type }}-{{ lower . }}{{ end }}">
+    <p aria-hidden="true">{{ i18n $i18nHight }}</p>
+    <div>
+      <img src="/images/diagramme-{{ $type }}.svg" alt="" width="143" height="150" loading="lazy">
+      {{- with $value }}
+        <p class="value">{{ safeHTML (i18n $i18nValue (dict "Value" .)) }}</p>
+      {{ end -}}
     </div>
-  {{ end }}
+    <p aria-hidden="true">{{ i18n $i18nLow }}</p>
+  </div>
 {{ end }}

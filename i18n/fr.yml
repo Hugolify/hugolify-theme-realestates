@@ -29,6 +29,7 @@ realestates:
       hight: Peu d’emission de CO2
       low: Emissions de CO2 très importantes
       value: '{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.an'
+    in_progress: En cours de relevé
     title: Diagnostic de performance énergétique
   discover: Découvrir l’annonce immobilière
   district: Secteur

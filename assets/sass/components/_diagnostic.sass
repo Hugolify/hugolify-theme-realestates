@@ -3,6 +3,10 @@
         display: flex
         flex-wrap: wrap
         justify-content: space-between
+        &-in-progress
+            position: relative
+            .diagram
+                opacity: .4
     .diagram
         flex-basis: 100%
         margin-bottom: $spacer
@@ -45,6 +49,17 @@
     .ges
         .value
             border-radius: 2rem
+    
+    .in_progress
+        --bs-badge-color: white
+        @extend .badge
+        background-color: $gray-800
+        font-size: 1rem
+        left: 50%
+        margin: 0
+        position: absolute
+        top: 50%
+        transform: translate3d(-50%,-50%,0)
 
     $dpe: "a" "#449970" 9.5%, "b" "#6bad5e" 22.75%, "c" "#88ba7d" 36%, "d" "#f3e54f" 50%, "e" "#e8b641" 63.5%, "f" "#de8647" 76.75%, "g" "#c6362c" 90.5%
     @each $grade, $color, $top in $dpe

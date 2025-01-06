@@ -29,6 +29,7 @@ realestates:
       hight: Low CO2 emissions
       low: Very significant CO2 emissions
       value: '{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.year'
+    in_progress: In progress
     title: Energy performance diagnostic
   discover: Discover real estate
   district: District
