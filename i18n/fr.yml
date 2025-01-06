@@ -18,6 +18,7 @@ realestates:
   bedroom_with_count:
     one: '{{ .count }} chambre'
     other: '{{ .count }} chambres'
+  box: Box
   cave: Cave
   day: Jour
   diagnostic:
@@ -46,6 +47,8 @@ realestates:
     other: 'Biens proposés à la vente par {{ .Person }}'
   garage: Garage
   groundfloor: <abbr title="Rez-de-chaussée">RDC</abbr>
+  heating: Chauffage
+  heating_type: Type de chauffage
   informations: Informations sur le bien
   keyfeature:
     one: Principale caractéristique

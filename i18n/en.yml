@@ -18,6 +18,7 @@ realestates:
   bedroom_with_count:
     one: '{{ .count }} bedroom'
     other: '{{ .count }} bedrooms'
+  box: Box
   cave: Cave
   day: Day
   diagnostic:
@@ -46,6 +47,8 @@ realestates:
     other: 'Properties offered for sale by {{ .Person }}'
   garage: Garage
   groundfloor: Groundfloor
+  heating: Heating
+  heating_type: Heating type
   informations: Property Information
   keyfeature:
     one: Key feature

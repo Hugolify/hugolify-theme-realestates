@@ -10,6 +10,16 @@
           <td>{{ partial "func/PrepareHTML" . }}</td>
         </tr>
       {{ end }}
+      {{ with .Params.offer }}
+        {{- if not .sold }}
+        {{- with .price }}
+          <tr>
+            <th scope="row">{{ i18n "realestates.pricing" }}</th>
+            <td>{{ partial "func/GetHumanPrice" . }}</td>
+          </tr>
+        {{ end -}}
+        {{ end -}}
+      {{ end }}
     {{ with .Params.informations }}
       {{ with .district }}
         <tr>
@@ -37,16 +47,20 @@
           <td>{{ partial "func/PrepareHTML" . }}</td>
         </tr>
       {{ end }}
-    {{ end }}
-    {{ with .Params.offer }}
-      {{- if not .sold }}
-      {{- with .price }}
-        <tr>
-          <th scope="row">{{ i18n "realestates.pricing" }}</th>
-          <td>{{ partial "func/GetHumanPrice" . }}</td>
-        </tr>
-      {{ end -}}
-      {{ end -}}
+      {{ with .energies }}
+        {{ with .heating }}
+          <tr>
+            <th scope="row">{{ i18n "realestates.heating" }}</th>
+            <td>{{ partial "func/PrepareHTML" . }}</td>
+          </tr>
+        {{ end }}
+        {{ with .heating_type }}
+          <tr>
+            <th scope="row">{{ i18n "realestates.heating_type" }}</th>
+            <td>{{ partial "func/PrepareHTML" . }}</td>
+          </tr>
+        {{ end }}
+      {{ end }}
     {{ end }}
     </tbody>
     <tbody>
@@ -150,6 +164,12 @@
       {{ with .has_garage }}
         <tr>
           <th scope="row">{{ i18n "realestates.garage" }}</th>
+          <td>{{ i18n "yes" }}</td>
+        </tr>
+      {{ end }}
+      {{ with .has_box }}
+        <tr>
+          <th scope="row">{{ i18n "realestates.box" }}</th>
           <td>{{ i18n "yes" }}</td>
         </tr>
       {{ end }}
