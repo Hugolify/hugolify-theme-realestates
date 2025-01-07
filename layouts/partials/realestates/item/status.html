@@ -1,5 +1,8 @@
 {{- $type := .Params.realestates_types | default "sale" -}}
 {{ with .Params.offer }}
+  {{- if .exclusive -}}
+    <p class="status status-exclusive">{{ i18n "realestates.exclusive" }}</p>
+  {{ end -}}
   {{- if .sold -}}
     <p class="status">
       {{- if eq $type "rent" -}}

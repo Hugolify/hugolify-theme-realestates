@@ -35,6 +35,7 @@ realestates:
   discover: Découvrir l’annonce immobilière
   district: Secteur
   elevator: Ascenseur
+  exclusive: Exclusivité
   exposure: Exposition
   field: Terrain
   field_with_value: '{{ .Value }} {{ .Unit }}'

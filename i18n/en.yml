@@ -35,6 +35,7 @@ realestates:
   discover: Discover real estate
   district: District
   elevator: Elevator
+  exclusive: Exclusive
   exposure: Exposure
   field: Field
   field_with_value: '{{ .Value }} {{ .Unit }}'
