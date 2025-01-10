@@ -4,10 +4,7 @@
     {{ if not .sold }}
       {{ with .price }}
         <p class="pricing">
-          {{- partial "func/GetHumanPrice" . -}}
-          {{- if eq $type "rent" -}}
-           / {{ i18n "realestates.month" | lower }}
-          {{- end -}}
+          {{- partial "realestates/price" (dict "price" . "type" $type) -}}
         </p>
       {{ end }}
     {{ else }}

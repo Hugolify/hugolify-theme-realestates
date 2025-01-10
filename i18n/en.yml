@@ -88,6 +88,7 @@ realestates:
     one: Property rent
     other: Properties rent
   rent_agency: Rent by the agency
+  rental: Rental
   room:
     one: Room
     other: Rooms
@@ -117,6 +118,7 @@ realestates:
     one: Real estate
     other: Real estates
   title_person: '{{ .Person }}’s real estates'
+  type: Type
   under_offer: Under offer
   visit:
     one: Visit

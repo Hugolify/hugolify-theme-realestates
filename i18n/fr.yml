@@ -88,6 +88,7 @@ realestates:
     one: Bien loué
     other: Biens loués
   rent_agency: Loué par l’agence
+  rental: Location
   room:
     one: Pièce
     other: Pièces
@@ -117,6 +118,7 @@ realestates:
     one: Annonce immobilière
     other: Annonces immobilières
   title_person: Annonces immobilières de {{ .Person }}
+  type: Type
   under_offer: Sous offre
   visit:
     one: Visite

@@ -1,15 +1,4 @@
-{{ with .Params.offer }}
-  {{ if not .hide_price }}
-    {{ if not .sold }}
-      {{ with .price }}
-        <p class="pricing">{{ partial "func/GetHumanPrice" . }}</p>
-      {{ end }}
-    {{ else }}
-      <p class="pricing">{{ i18n "realestates.sold" 1 }}</p>
-    {{ end }}
-  {{ else }}
-    {{ with .status }}
-      <p class="pricing">{{ partial "func/PrepareHTML" . }}</p>
-    {{ end }}
-  {{ end }}
-{{ end }}
+{{- partial "func/GetHumanPrice" .price -}}
+{{- if eq .type "rent" -}}
+ / {{ i18n "realestates.month" | lower }}
+{{- end -}}
