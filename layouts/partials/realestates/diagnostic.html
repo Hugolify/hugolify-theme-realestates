@@ -1,10 +1,10 @@
 {{ with .Params.diagnostic }}
-  {{- if or .kwh .co2 .in_progress }}
+  {{- if or .dpe .ges .in_progress }}
     <section class="diagnostic">
       <h2>{{ i18n "realestates.diagnostic.title" }}</h2>
       <div class="diagrams {{- if .in_progress }} diagrams-in-progress{{ end }}">
-        {{ partial "realestates/diagram" (dict "type" "dpe" "value" .kwh) }}
-        {{ partial "realestates/diagram" (dict "type" "ges" "value" .co2) }}
+        {{ partial "realestates/diagram" (dict "type" "dpe" "value" .dpe) }}
+        {{ partial "realestates/diagram" (dict "type" "ges" "value" .ges) }}
         {{- if .in_progress }}
           <p class="in_progress">{{ i18n "realestates.diagnostic.in_progress" }}</p>
         {{ end -}}
