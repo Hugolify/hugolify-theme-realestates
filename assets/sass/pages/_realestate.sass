@@ -32,15 +32,17 @@
             &::before
                 content: none
     
+    .hero,
     .heading
-        h1
-            min-width: 100%
-            text-wrap: pretty
-
         .status-exclusive
             @extend .badge
             background-color: #{$red}
             margin-bottom: .5rem
+    
+    .heading
+        h1
+            min-width: 100%
+            text-wrap: pretty
     
     .informations
         table
