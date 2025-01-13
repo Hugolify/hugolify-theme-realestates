@@ -1,10 +1,10 @@
-{{ if or .Params.address.city .Params.informations.district }}
+{{- if or .Params.address.city .Params.informations.district }}
   <p class="surtitle district">
     {{- with .Params.address.city }}
-      {{ partial "func/PrepareHTML" . }}
+      {{- partial "func/PrepareHTML" . -}}
     {{ end -}}
     {{- with .Params.informations.district }}
-      {{ partial "func/PrepareHTML" . }}
+      {{ partial "func/PrepareHTML" . -}}
     {{ end -}}
   </p>
-{{ end }}
+{{ end -}}
