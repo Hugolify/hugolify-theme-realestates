@@ -22,12 +22,14 @@ realestates:
   cave: Cave
   day: Day
   diagnostic:
-    dpe:
+    epd:
       hight: Very efficient accommodation
+      label: Energy performance diagnostics (DPE)
       low: Extremely energy-intensive housing
       value: '{{ .Value }} kWh/m<sup>2</sup>.year'
-    ges:
+    ghg:
       hight: Low CO2 emissions
+      label: Greenhouse gas (GHG)
       low: Very significant CO2 emissions
       value: '{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.year'
     in_progress: In progress

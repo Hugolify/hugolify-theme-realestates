@@ -22,12 +22,14 @@ realestates:
   cave: Cave
   day: Jour
   diagnostic:
-    dpe:
+    epd:
       hight: Logement très performant
+      label: Diagnostic de performance énergétique (DPE)
       low: Logement extrêmement consommateur d’énergie
       value: '{{ .Value }} kWh/m<sup>2</sup>.an'
-    ges:
+    ghg:
       hight: Peu d’emission de CO2
+      label: Gaz à effet de serre (GHG)
       low: Emissions de CO2 très importantes
       value: '{{ .Value }} CO<sub>2</sub>/m<sup>2</sup>.an'
     in_progress: En cours de relevé
