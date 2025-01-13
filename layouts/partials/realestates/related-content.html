@@ -1,27 +1,26 @@
-<!-- Get Real estates -->
-{{- $realestates := where site.RegularPages "Section" "realestates" -}}
-<!-- Exclude the current page -->
+{{/*  Get Real estates  */}}
+{{- $items := where site.RegularPages "Section" "realestates" -}}
+{{/*  Exclude the current page  */}}
 {{- $currentDatePage := .Date -}}
-{{- $realestates = where $realestates "Date" "ne" $currentDatePage -}}
-<!-- Exclude sold real estates -->
-{{- $realestates = where $realestates "Params.offer.sold" "ne" true -}}
-<!-- In same categories -->
+{{- $items = where $items "Date" "ne" $currentDatePage -}}
+{{/*  Exclude sold real estates  */}}
+{{- $items = where $items "Params.offer.sold" "ne" true -}}
+{{/*  In same category  */}}
 {{- if isset .Params "realestates_categories" -}}
-  {{ $realestates_save := $realestates -}}
-  {{ $realestates = where $realestates "Params.realestates_categories" "eq" .Params.realestates_categories -}}
-  <!-- if not same real estates, get others -->
-  {{- if eq (len $realestates) 0 -}}
-    {{ $realestates = $realestates_save -}}
-  {{- end }}
+  {{- $items = where $items "Params.realestates_categories" "eq" .Params.realestates_categories -}}
 {{- end }}
-<!-- Get 3 lastest realestates and order by newest -->
-{{- $items := (first 3 $realestates).ByDate.Reverse -}}
+{{/*  In same types  */}}
+{{- if isset .Params "realestates_types" -}}
+  {{- $items = where $items "Params.realestates_types" "eq" .Params.realestates_types -}}
+{{- end }}
 
 {{ if gt $items 0 }}
+  {{/*  Get 3 lastest realestates and order by newest  */}}
+  {{- $items = (first 3 $items).ByDate.Reverse -}}
   <section class="related">
     <div class="container">
       <h2>{{ i18n "realestates.related.available" $items }}</h2>
       {{ partial "realestates/items" (dict "pages" $items "scrollsnap" true) }}
-    </section>
     </div>
+  </section>
 {{ end }}
