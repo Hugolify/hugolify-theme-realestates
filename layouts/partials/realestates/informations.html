@@ -16,13 +16,14 @@
           <th scope="row">{{ i18n "realestates.type" }}</th>
           <td>{{ i18n "realestates.rental" }}</td>
         </tr>
-      {{ end -}}
-      {{- $realestates_categories := "realestates/realestates_categories.html" -}}
-      {{- if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
-        <tr>
-          <th scope="row">{{ i18n "realestates_categories.title" }}</th>
-          <td>{{ partial $realestates_categories . }}</td>
-        </tr>
+      {{- else -}}
+        {{- $realestates_categories := "realestates/realestates_categories.html" -}}
+        {{- if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+          <tr>
+            <th scope="row">{{ i18n "realestates_categories.title" }}</th>
+            <td>{{ partial $realestates_categories . }}</td>
+          </tr>
+        {{ end -}}
       {{ end -}}
       {{- with .Params.offer }}
         {{- if not .sold }}
