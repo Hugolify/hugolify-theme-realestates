@@ -13,7 +13,7 @@
   <div class="diagram {{ $type }} {{- with $grade }} {{ $type }}-{{ lower . }}{{ end }}">
     <p aria-hidden="true">{{ i18n $i18nHight }}</p>
     <div>
-      <img src="/images/diagramme-{{ $type }}.svg" alt="{{ i18n $i18nLabel | safeHTMLAttr }}" width="143" height="150" loading="lazy" decoding="async">
+      <img src="/images/diagram-{{ $type }}.svg" alt="{{ i18n $i18nLabel | safeHTMLAttr }}" width="143" height="150" loading="lazy" decoding="async">
       {{- with $value }}
         <p class="value">{{ safeHTML (i18n $i18nValue (dict "Value" .)) }}</p>
       {{ end -}}
