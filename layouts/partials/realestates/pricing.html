@@ -1,18 +1,14 @@
 {{- $type := .Params.realestates_types | default "sale" -}}
-{{ with .Params.offer }}
-  {{ if not .hide_price }}
-    {{ if not .sold }}
-      {{ with .price }}
+{{- with .Params.offer }}
+  {{- if not .hide_price }}
+    {{- if not .sold }}
+      {{- with .price }}
         <p class="pricing">
           {{- partial "realestates/price" (dict "price" . "type" $type) -}}
         </p>
-      {{ end }}
-    {{ else }}
+      {{ end -}}
+    {{- else -}}
       <p class="pricing">{{ cond (eq $type "sale") (i18n "realestates.sold" 1) (i18n "realestates.rent" 1) }}</p>
-    {{ end }}
-  {{ else }}
-    {{ with .status }}
-      <p class="pricing">{{ partial "func/PrepareHTML" . }}</p>
-    {{ end }}
-  {{ end }}
-{{ end }}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}

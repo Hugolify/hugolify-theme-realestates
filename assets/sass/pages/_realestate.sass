@@ -25,12 +25,25 @@
                 &::before
                     content: '—'
                     margin-right: .5rem
-        .pricing
-            font-size: 1.25rem
-            font-weight: $font-weight-bold
+        .status
+            --bs-badge-bg: #{$gray-100}
+            --bs-badge-color: #{$gray-800}
+            --bs-badge-font-weight: #{$font-weight-normal}
+            --bs-badge-padding-x: .75rem
+            --bs-badge-padding-y: .5rem
+            @extend .badge
+            background-color: var(--bs-badge-bg)
             margin-left: auto
             &::before
                 content: none
+
+        .pricing
+            font-size: 1.25rem
+            font-weight: $font-weight-bold
+            &::before
+                content: none
+        p:not(.status) + .pricing
+            margin-left: auto
     
     .hero,
     .heading
