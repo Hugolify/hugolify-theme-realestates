@@ -1,2 +1,5 @@
-{{ $page := site.GetPage "/realestates" }}
+{{ $page := . }}
+{{- if not (partial "func/HasHero" .) -}}
+  {{ $page = site.GetPage "/realestates" }}
+{{- end -}}
 {{ partial "realestates/hero" $page }}
