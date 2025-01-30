@@ -8,8 +8,12 @@
             <i class="icon icon-{{ . }}"></i>
           {{- end -}}
           <div>
-            <b>{{ partial "func/PrepareHTML" .title }}</b><br>
-            <span>{{ partial "func/PrepareHTML" .text }}</span>
+            {{- if .title }}
+            <b>{{ partial "func/PrepareHTML" .title }}</b>{{ if .text }}<br>{{ end }}
+            {{ end -}}
+            {{- with .text }}
+            <span>{{ partial "func/PrepareHTML" . }}</span>
+            {{ end -}}
           </div>
         </li>
       {{ end }}

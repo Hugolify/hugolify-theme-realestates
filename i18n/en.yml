@@ -78,10 +78,9 @@ realestates:
   pricing_with_value: 'Price : {{ .Value }}'
   reference: Reference
   reference_short: Ref.
-  reference_long: Agency reference
-  reference_with_value: 'Reference: {{ .Value }}'
-  reference_with_value_short: 'Ref. {{ .Value }}'
-  reference_with_value_long: 'Agency reference: {{ .Value }}'
+  reference:
+    label_long: Agency reference
+    label_long_with_value: 'Agency reference: {{ .Value }}'
   related:
     available:
       one: Autre property disponible

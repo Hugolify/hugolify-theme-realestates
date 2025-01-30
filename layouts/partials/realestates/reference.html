@@ -1,4 +1,1 @@
-{{ with .Params.reference }}
-  {{ $reference := partial "func/PrepareHTML" . }}
-  <p class="reference">{{ i18n "realestates.reference_with_value" (dict "Value" $reference) }}</p>
-{{ end }}
+{{- partial "commons/reference" . -}}

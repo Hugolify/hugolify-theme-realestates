@@ -76,12 +76,9 @@ realestates:
   parking: Parking
   pricing: Prix
   pricing_with_value: 'Prix : {{ .Value }}'
-  reference: Référence
-  reference_short: Réf.
-  reference_long: Référence agence
-  reference_with_value: 'Référence : {{ .Value }}'
-  reference_with_value_short: 'Réf. {{ .Value }}'
-  reference_with_value_long: 'Référence agence : {{ .Value }}'
+  reference:
+    label_long: Référence agence
+    label_long_with_value: 'Référence agence : {{ .Value }}'
   related:
     available:
       one: Autre bien disponible
