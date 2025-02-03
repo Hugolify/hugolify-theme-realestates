@@ -83,7 +83,7 @@ realestates:
     label_long_with_value: 'Agency reference: {{ .Value }}'
   related:
     available:
-      one: Autre property disponible
+      one: Other property available
       other: Other properties available
   rent:
     one: Property rent
