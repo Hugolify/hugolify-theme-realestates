@@ -84,7 +84,7 @@ realestates:
   related:
     available:
       one: Other property available
-      other: Other properties available
+      other: Others properties available
   rent:
     one: Property rent
     other: Properties rent
