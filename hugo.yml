@@ -18,6 +18,8 @@ params:
     collections:
       realestates:
         enable: true
+        sortable: "[date, title]"
+        summary: "{{title}} - {{date | date('YYYY-MM-DD')}}"
   realestates:
     thumbnail:
       desktop: '416x291'
