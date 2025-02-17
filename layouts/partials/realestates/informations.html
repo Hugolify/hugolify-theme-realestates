@@ -1,7 +1,7 @@
 {{- $type := .Params.realestates_types | default "sale" -}}
 {{- $unit := site.Params.area_unit | default "m<sup>2</sup>" -}}
 {{- $informations := i18n "realestates.informations" -}}
-<section class="informations" id="{{ $informations | urlize }}">
+<section class="informations" id="{{ $informations | anchorize }}">
   <h2>{{ $informations }}</h2>
   <table>
     <tbody>

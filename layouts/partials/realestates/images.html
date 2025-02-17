@@ -2,7 +2,7 @@
   {{ $len := . | len }}
   {{ $gallery := i18n "gallery" $len }}
   {{ $ratio := .7 }}
-  <section class="properties_gallery" id="{{ $gallery | urlize }}">
+  <section class="properties_gallery" id="{{ $gallery | anchorize }}">
     {{ partial "commons/gallery" (dict "images" . "ratio" $ratio) }}
   </section>
 {{ end }}

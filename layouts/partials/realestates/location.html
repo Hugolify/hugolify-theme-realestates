@@ -1,7 +1,7 @@
 {{ with .Params.address }}
   {{ if or .location .coordinates }}
     {{- $location := i18n "realestates.location" -}}
-    <section class="location" id="{{ $location | urlize }}">
+    <section class="location" id="{{ $location | anchorize }}">
       <h2>{{ $location }}</h2>
       {{- $marker := false -}}
       {{- with .location -}}
