@@ -12,7 +12,7 @@
         {{- $marker = slice (dict "type" "Point" "coordinates" $coordinates) -}}
       {{- end -}}
       {{ if $marker }}
-        {{ partial "commons/map" (dict "location" ($marker | jsonify) "marker_hidden" true ) }}
+        {{ partial "commons/map.html" (dict "location" ($marker | jsonify) "marker_hidden" true ) }}
       {{ end }}
     </section>
   {{ end }}

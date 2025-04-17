@@ -14,10 +14,10 @@
 {{- $items = first $count ( $items.ByDate.Reverse ) -}}
 
 {{- if $items }}
-<section class="block-latest block-latest-{{ $layout }} {{- with .background }} block-bg{{ end }}" {{- partial "func/SetAnim" (dict "element" "block") }}>
+<section class="block-latest block-latest-{{ $layout }} {{- with .background }} block-bg{{ end }}" {{- partial "func/SetAnim.html" (dict "element" "block") }}>
   <div class="container">
 
-    {{ partial "blocks/heading" . }}
+    {{ partial "blocks/heading.html" . }}
 
     {{- with $items }}
       {{- if eq $layout "list" }}

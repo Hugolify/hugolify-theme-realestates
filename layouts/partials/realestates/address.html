@@ -1,3 +1,3 @@
 {{ with .Params.address }}
-  {{ partial "commons/address" (dict "address" . "card" true) }}
+  {{ partial "commons/address.html" (dict "address" . "card" true) }}
 {{ end }}

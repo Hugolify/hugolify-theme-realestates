@@ -44,7 +44,7 @@
   {{ end -}}
 
   {{- with .Content }}
-    "description": {{ . | plainify | safeHTML }},
+    "description": {{ partial "func/PrepareData.html" . }},
   {{ end }}
   }
 </script>
@@ -107,7 +107,7 @@
   {{- end -}}
 
   {{- with .Content }}
-    "description": {{ . | plainify | safeHTML }},
+    "description": {{ partial "func/PrepareData.html" . }},
   {{ end }}
   }
 </script>

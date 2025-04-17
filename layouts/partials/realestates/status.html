@@ -5,7 +5,7 @@
     <p class="status">{{ i18n "realestates.rent_agency" }}</p>
   {{ else }}
     {{ with .status }}
-      <p class="status">{{ partial "func/PrepareHTML" . }}</p>
+      <p class="status">{{ partial "func/PrepareHTML.html" . }}</p>
     {{ end }}
   {{ end }}
 {{ end }}

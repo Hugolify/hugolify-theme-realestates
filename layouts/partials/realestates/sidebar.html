@@ -1,4 +1,4 @@
-<div class="sidebar"{{ partial "func/SetAnim" (dict "element" "sidebar") }}>
+<div class="sidebar"{{ partial "func/SetAnim.html" (dict "element" "sidebar") }}>
   {{ partial "realestates/key-features" . }}
   {{ $realestates_persons := "realestates/realestates_persons.html" }}
   {{ if templates.Exists ( printf "partials/%s" $realestates_persons ) }}

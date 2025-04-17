@@ -1,11 +1,11 @@
 {{- if not (partial "func/HasHero" .) -}}
-  <header class="heading" {{- partial "func/SetAnim" (dict "element" "heading") }}>
+  <header class="heading" {{- partial "func/SetAnim.html" (dict "element" "heading") }}>
     {{- if .Params.offer.exclusive -}}
       <p class="status-exclusive">{{ i18n "realestates.exclusive" }}</p>
     {{ end -}}
     {{ partial "realestates/district" . }}
     {{- with .Title -}}
-      <h1>{{ partial "func/PrepareHTML" . }}</h1>
+      <h1>{{ partial "func/PrepareHTML.html" . }}</h1>
     {{- end -}}
   </header>
 {{- end -}}

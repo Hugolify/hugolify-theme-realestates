@@ -1,9 +1,9 @@
 {{ define "hero"}}
-  {{- partial "realestates/hero-single" . -}}
+  {{- partial "realestates/hero-single.html" . -}}
 {{ end }}
 
 {{ define "main" }}
-  {{ partial "realestates/schema-single" . }}
-  {{ partial "realestates/container-single" . }}
+  {{ partial "realestates/schema-single.html" . }}
+  {{ partial "realestates/container-single.html" . }}
   {{ partial "realestates/related-content" . }}
 {{ end }}

@@ -8,7 +8,7 @@
       {{- with .Params.reference }}
         <tr>
           <th scope="row">{{ i18n "realestates.reference.label_long" }}</th>
-          <td>{{ partial "func/PrepareHTML" . }}</td>
+          <td>{{ partial "func/PrepareHTML.html" . }}</td>
         </tr>
       {{ end -}}
       {{- if eq $type "rent" }}
@@ -41,7 +41,7 @@
       {{ with .district }}
         <tr>
           <th scope="row">{{ i18n "realestates.district" }}</th>
-          <td>{{ partial "func/PrepareHTML" . }}</td>
+          <td>{{ partial "func/PrepareHTML.html" . }}</td>
         </tr>
       {{ end }}
       {{ with .area }}
@@ -61,20 +61,20 @@
       {{ with .year }}
         <tr>
           <th scope="row">{{ i18n "realestates.year_construction" }}</th>
-          <td>{{ partial "func/PrepareHTML" . }}</td>
+          <td>{{ partial "func/PrepareHTML.html" . }}</td>
         </tr>
       {{ end }}
       {{ with .energies }}
         {{ with .heating }}
           <tr>
             <th scope="row">{{ i18n "realestates.heating" }}</th>
-            <td>{{ partial "func/PrepareHTML" . }}</td>
+            <td>{{ partial "func/PrepareHTML.html" . }}</td>
           </tr>
         {{ end }}
         {{ with .heating_type }}
           <tr>
             <th scope="row">{{ i18n "realestates.heating_type" }}</th>
-            <td>{{ partial "func/PrepareHTML" . }}</td>
+            <td>{{ partial "func/PrepareHTML.html" . }}</td>
           </tr>
         {{ end }}
       {{ end }}
@@ -133,13 +133,13 @@
         {{ $floor := cond (eq .floor 0) (i18n "realestates.groundfloor") .floor }}
         <tr>
           <th scope="row">{{ i18n "realestates.floor" }}</th>
-          <td>{{ partial "func/PrepareHTML" $floor }}</td>
+          <td>{{ partial "func/PrepareHTML.html" $floor }}</td>
         </tr>
       {{ end }}
       {{ with .exposure }}
         <tr>
           <th scope="row">{{ i18n "realestates.exposure" }}</th>
-          <td>{{ partial "func/PrepareHTML" . }}</td>
+          <td>{{ partial "func/PrepareHTML.html" . }}</td>
         </tr>
       {{ end }}
       {{ with .has_elevator }}
