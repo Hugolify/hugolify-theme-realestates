@@ -13,11 +13,22 @@ module:
     - source: static
       target: static
 
+# Permalinks
+permalinks:
+  page:
+    realestates: /realestates/:slug/
+
+# Params
 params:
   admin:
     collections:
       realestates:
         enable: true
+        filter:
+          - field: isIndex
+            value: false
+        icon:
+          sveltiacms: real_estate_agent
         sortable: "[date, title]"
         summary: "{{title}} - {{date | date('YYYY-MM-DD')}}"
   realestates:
@@ -25,7 +36,3 @@ params:
       desktop: '416x291'
       mobile: '300x210'
       scrollsnap: '240x168'
-
-# Default
-permalinks:
-  realestates: /realestates/:slug/
