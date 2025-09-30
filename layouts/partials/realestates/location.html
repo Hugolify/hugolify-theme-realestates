@@ -4,15 +4,23 @@
     <section class="location" id="{{ $location | anchorize }}">
       <h2>{{ $location }}</h2>
       {{- $marker := false -}}
-      {{- with .location -}}
+      {{- with .location }}
         {{- $marker = . -}}
+        {{/*  DecapCMS reverse coordinates  */}}
+        {{- $oldCoordinates := (unmarshal .).coordinates -}}
+        {{- $newCoordinates := partial "func/ReverseSlice.html" $oldCoordinates -}}
+        {{- $oldCoordinates = string ($oldCoordinates | jsonify) -}}
+        {{- $newCoordinates = string ($newCoordinates | jsonify) -}}
+        {{- $marker = replace $marker $oldCoordinates $newCoordinates -}}
+        {{/*  / DecapCMS reverse coordinates  */}}
+      {{ else -}}
+        {{- with .coordinates -}}
+          {{- $coordinates := slice .lat .lng -}}
+          {{- $marker = (dict "type" "Point" "coordinates" $coordinates) | jsonify -}}
+        {{- end -}}
       {{- end -}}
-      {{- with .coordinates -}}
-        {{- $coordinates := slice .lat .lng -}}
-        {{- $marker = slice (dict "type" "Point" "coordinates" $coordinates) -}}
-      {{- end -}}
-      {{ if $marker }}
-        {{ partial "commons/map.html" (dict "location" ($marker | jsonify) "marker_hidden" true ) }}
+      {{ with $marker }}
+        {{ partial "commons/map.html" (dict "location" (slice .) "marker_hidden" true ) }}
       {{ end }}
     </section>
   {{ end }}
