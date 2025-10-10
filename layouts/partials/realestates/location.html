@@ -1,27 +1,12 @@
-{{ with .Params.address }}
-  {{ if or .location .coordinates }}
+{{- with .Params.address }}
+  {{- if or .location .coordinates }}
     {{- $location := i18n "realestates.location" -}}
     <section class="location" id="{{ $location | anchorize }}">
       <h2>{{ $location }}</h2>
-      {{- $marker := false -}}
-      {{- with .location }}
-        {{- $marker = . -}}
-        {{/*  DecapCMS reverse coordinates  */}}
-        {{- $oldCoordinates := (unmarshal .).coordinates -}}
-        {{- $newCoordinates := partial "func/ReverseSlice.html" $oldCoordinates -}}
-        {{- $oldCoordinates = string ($oldCoordinates | jsonify) -}}
-        {{- $newCoordinates = string ($newCoordinates | jsonify) -}}
-        {{- $marker = replace $marker $oldCoordinates $newCoordinates -}}
-        {{/*  / DecapCMS reverse coordinates  */}}
-      {{ else -}}
-        {{- with .coordinates -}}
-          {{- $coordinates := slice .lat .lng -}}
-          {{- $marker = (dict "type" "Point" "coordinates" $coordinates) | jsonify -}}
-        {{- end -}}
-      {{- end -}}
-      {{ with $marker }}
+      {{- $marker := partial "func/GetMarker.html" . -}}
+      {{- with $marker }}
         {{ partial "commons/map.html" (dict "location" (slice .) "marker_hidden" true ) }}
-      {{ end }}
+      {{- end }}
     </section>
-  {{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
