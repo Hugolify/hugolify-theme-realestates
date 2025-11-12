@@ -1,6 +1,6 @@
 {{ with .Params.gallery }}
   {{ $len := . | len }}
-  {{ $gallery := i18n "gallery" $len }}
+  {{ $gallery := i18n "gallery.label" $len }}
   {{ $ratio := .7 }}
   <section class="properties_gallery" id="{{ $gallery | anchorize }}">
     {{ partial "commons/gallery.html" (dict "images" . "ratio" $ratio) }}
