@@ -76,7 +76,6 @@ realestates:
   parking: Parking
   pricing: Pricing
   pricing_with_value: 'Price : {{ .Value }}'
-  reference: Reference
   reference_short: Ref.
   reference:
     label_long: Agency reference
