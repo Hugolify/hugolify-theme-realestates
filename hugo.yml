@@ -28,7 +28,12 @@ params:
           - field: isIndex
             value: false
         icon:
-          sveltiacms: real_estate_agent
+          bootstrap_icons: house
+          iconoir: home
+          lucide: house
+          material_icons: real_estate_agent
+          material_symbols: real_estate_agent
+          sveltiacms: real_estate_agent # legacy
         sortable: "[date, title]"
         summary: "{{title}} - {{date | date('YYYY-MM-DD')}}"
   realestates:
