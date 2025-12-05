@@ -1,7 +1,7 @@
 {{- $fields := partial "admin/blocks/fields/latest-realestates.html" . -}}
 
 {{- $args := dict 
-  "label" (i18n "admin.blocks.latest.label")
+  "label" (i18n "admin.blocks.latest_realestates.label")
   "name" "latest-realestates"
   "collapsed" false
   "fields" $fields

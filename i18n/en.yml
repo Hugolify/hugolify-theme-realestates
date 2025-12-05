@@ -128,3 +128,8 @@ realestates:
   week: Week
   year: Year
   year_construction: Year of construction
+
+admin:
+  blocks:
+    latest_realestates:
+      label: Latest real estates

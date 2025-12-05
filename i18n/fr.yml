@@ -127,3 +127,8 @@ realestates:
   week: Semaine
   year: Année
   year_construction: Année de construction
+
+admin:
+  blocks:
+    latest_realestates:
+      label: Dernières annonces immobilières
