@@ -50,8 +50,17 @@ realestates:
     other: 'Properties offered for sale by {{ .Person }}'
   garage: Garage
   groundfloor: Groundfloor
-  heating: Heating
-  heating_type: Heating type
+  heating:
+    label: Heating
+    collective: Collective
+    individual: Individual
+    type:
+      label: Heating type
+      electric: Electric
+      gas: Gas
+      heat_pump: Heat pump
+      reversible_ac: Reversible air conditioning
+      solar: Solar
   informations: Property Information
   keyfeature:
     one: Key feature

@@ -67,14 +67,14 @@
       {{ with .energies }}
         {{ with .heating }}
           <tr>
-            <th scope="row">{{ i18n "realestates.heating" }}</th>
-            <td>{{ partial "func/PrepareHTML.html" . }}</td>
+            <th scope="row">{{ i18n "realestates.heating.label" }}</th>
+            <td>{{ i18n (print "realestates.heating." .) | default . }}</td>
           </tr>
         {{ end }}
         {{ with .heating_type }}
           <tr>
-            <th scope="row">{{ i18n "realestates.heating_type" }}</th>
-            <td>{{ partial "func/PrepareHTML.html" . }}</td>
+            <th scope="row">{{ i18n "realestates.heating.type.label" }}</th>
+            <td>{{ i18n (print "realestates.heating.type." .) | default . }}</td>
           </tr>
         {{ end }}
       {{ end }}

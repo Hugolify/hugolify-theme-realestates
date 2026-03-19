@@ -50,8 +50,17 @@ realestates:
     other: 'Biens proposés à la vente par {{ .Person }}'
   garage: Garage
   groundfloor: <abbr title="Rez-de-chaussée">RDC</abbr>
-  heating: Chauffage
-  heating_type: Type de chauffage
+  heating:
+    label: Chauffage
+    collective: Collectif
+    individual: Individuel
+    type:
+      label: Type de chauffage
+      electric: Electrique
+      gas: Gaz
+      heat_pump: Pompe à chaleur
+      reversible_ac: Climatisation réversible
+      solar: Solaire
   informations: Informations sur le bien
   keyfeature:
     one: Principale caractéristique
