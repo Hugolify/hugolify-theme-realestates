@@ -1,34 +1,4 @@
-{{- $sold := .sold | default false -}}
-{{- $type := .realestates_types | default "sale" -}}
-{{- $section := "realestates" -}}
 {{- $layout := .layout | default "grid" -}}
-{{- $atf := cond .first true false -}}
-{{- $count := 3 -}}
-{{- with .count -}}
-  {{- $count = . -}}
-{{- end -}}
-
-{{- $items := where site.RegularPages "Section" $section -}}
-{{- $items = where $items "Params.realestates_types" $type -}}
-{{- $items = where $items "Params.offer.sold" $sold -}}
-{{- $items = first $count ( $items.ByDate.Reverse ) -}}
-
-{{- if $items }}
-<section class="block-latest block-latest-{{ $layout }} {{- with .background }} block-bg{{ end }}" {{- partial "func/SetAnim.html" (dict "element" "block") }}>
-  <div class="container">
-
-    {{ partial "blocks/heading.html" . }}
-
-    {{- with $items }}
-      {{- if eq $layout "list" }}
-        {{ partial "blocks/templates/latest/list.html" . }}
-      {{- else -}}
-        {{ partial "blocks/templates/latest/grid.html" (dict "section" $section "items" . "atf" $atf) }}
-      {{ end -}}
-    {{ end -}}
-
-    {{- partial "blocks/templates/selected/more" (dict "section" $section "show_more" .show_more) -}}
-
-  </div>
+<section class="block-latest block-latest-{{ $layout }} block-latest-realestates {{- with .background }} block-bg{{ end }}" {{- partial "func/SetAnim.html" (dict "element" "block") }}>
+  {{- partial "blocks/templates/latest-realestates/body.html" . -}}
 </section>
-{{- end -}}

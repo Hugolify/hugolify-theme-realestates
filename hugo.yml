@@ -34,8 +34,8 @@ params:
           material_icons: real_estate_agent
           material_symbols: real_estate_agent
           sveltiacms: real_estate_agent # legacy
-        sortable: "[date, title]"
-        summary: "{{title}} - {{date | date('YYYY-MM-DD')}}"
+        sortable: "['commit_date', 'date', 'reference', 'title']"
+        summary: "{{reference}} - {{title}} - {{date | date('YYYY-MM-DD')}}"
   realestates:
     thumbnail:
       desktop: '416x291'

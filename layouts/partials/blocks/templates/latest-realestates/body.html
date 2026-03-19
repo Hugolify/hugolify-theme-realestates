@@ -1,0 +1,32 @@
+{{- $section := "realestates" -}}
+{{- $sold := .sold | default false -}}
+{{- $type := .realestates_types | default "sale" -}}
+{{- $layout := .layout | default "grid" -}}
+{{- $atf := cond .first true false -}}
+{{- $count := 3 -}}
+{{- with .count -}}
+  {{- $count = . -}}
+{{- end -}}
+
+{{- $items := where site.RegularPages "Section" $section -}}
+{{- $items = where $items "Params.realestates_categories" "!=" "Fonds de commerce" -}}
+{{- $items = where $items "Params.realestates_types" $type -}}
+{{- $items = where $items "Params.offer.sold" $sold -}}
+{{- $pinned := (where $items "Params.weight" "gt" 0).ByParam "weight" -}}
+{{- $rest := (where $items "Params.weight" "eq" nil).ByDate.Reverse -}}
+{{- $items = $pinned | append $rest -}}
+{{- $items = first $count $items -}}
+
+{{- $context := merge . (dict "container" false) -}}
+
+{{- if $items }}
+<div class="container">
+  {{- partial "blocks/templates/latest/header.html" $context }}
+  {{- if eq $layout "list" }}
+    {{ partial "blocks/templates/latest/list.html" $items }}
+  {{- else }}
+    {{ partial "blocks/templates/latest/grid.html" (dict "section" $section "items" $items "atf" $atf "type" .type) }}
+  {{- end }}
+  {{- partial "blocks/templates/latest/footer.html" $context }}
+</div>
+{{ end -}}

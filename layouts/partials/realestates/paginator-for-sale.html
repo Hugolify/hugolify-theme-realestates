@@ -1,7 +1,9 @@
 {{- $realestates := where site.RegularPages "Section" "realestates" -}}
 {{- $realestates = where $realestates "Params.realestates_types" "eq" "sale" -}}
 {{- $realestates = where $realestates "Params.offer.sold" "ne" true -}}
-{{- $realestates = $realestates.ByDate.Reverse -}}
+{{- $pinned := (where $realestates "Params.weight" "gt" 0).ByParam "weight" -}}
+{{- $rest := (where $realestates "Params.weight" "eq" nil).ByDate.Reverse -}}
+{{- $realestates = $pinned | append $rest -}}
 {{- $paginator := (.Paginate $realestates).Pages -}}
 {{- if $paginator -}}
   {{- $atf := cond (partial "func/HasImageHero.html" .) false true -}}
