@@ -1,0 +1,178 @@
+{
+  "realestate": {
+    "border": {
+      "radius": {
+        "$value": "{item.border.radius}",
+        "$type": "dimension"
+      },
+      "style": {
+        "$value": "{item.border.style}",
+        "$type": "strokeStyle"
+      },
+      "width": {
+        "$value": "{item.border.width}",
+        "$type": "dimension"
+      }
+    },
+    "btn": {
+      "border": {
+        "width": {
+          "$value": "{item.btn.border.width}",
+          "$type": "dimension"
+        }
+      },
+      "color": {
+        "background": {
+          "$value": "{item.btn.color.background}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{item.btn.color.text}",
+          "$type": "color"
+        }
+      },
+      "padding": {
+        "$value": "{item.btn.padding}",
+        "$type": "dimension"
+      },
+      "textDecoration": {
+        "default": {
+          "$value": "{item.btn.textDecoration.default}",
+          "$type": "string"
+        },
+        "hover": {
+          "$value": "{item.btn.textDecoration.hover}",
+          "$type": "string"
+        }
+      }
+    },
+    "color": {
+      "background": {
+        "$value": "{item.color.background}",
+        "$type": "color"
+      },
+      "border": {
+        "$value": "{item.color.border}",
+        "$type": "color"
+      },
+      "text": {
+        "default": {
+          "$value": "{item.color.text.default}",
+          "$type": "color"
+        },
+        "muted": {
+          "$value": "{item.color.text.muted}",
+          "$type": "color"
+        }
+      }
+    },
+    "gap": {
+      "$value": "{item.gap}",
+      "$type": "dimension"
+    },
+    "media": {
+      "color": {
+        "background": {
+          "$value": "{item.media.color.background}",
+          "$type": "color"
+        }
+      },
+      "order": {
+        "$value": "{item.media.order}",
+        "$type": "number"
+      },
+      "ratio": {
+        "$value": "{item.media.ratio}",
+        "$type": "string"
+      }
+    },
+    "metas": {
+      "border": {
+        "end": {
+          "$value": "{item.metas.border.end}",
+          "$type": "dimension"
+        },
+        "start": {
+          "$value": "{item.metas.border.start}",
+          "$type": "dimension"
+        }
+      },
+      "color": {
+        "background": {
+          "$value": "{item.metas.color.background}",
+          "$type": "color"
+        }
+      },
+      "fontSize": {
+        "$value": "{item.metas.fontSize}",
+        "$type": "dimension"
+      },
+      "order": {
+        "$value": "{item.metas.order}",
+        "$type": "number"
+      },
+      "padding": {
+        "inline": {
+          "$value": "{item.metas.padding.inline}",
+          "$type": "dimension"
+        },
+        "block": {
+          "start": {
+            "$value": "{item.metas.padding.block.start}",
+            "$type": "dimension"
+          },
+          "end": {
+            "$value": "{item.metas.padding.block.end}",
+            "$type": "dimension"
+          }
+        }
+      }
+    },
+    "order":   {
+      "$value": "{item.order}",
+      "$type": "string"
+    },
+    "padding": {
+      "inline": {
+        "$value": "{item.padding.inline}",
+        "$type": "dimension"
+      },
+      "block": {
+        "$value": "{item.padding.block}",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "default": { 
+        "$value": "{item.shadow.default}", 
+        "$type": "shadow" 
+      },
+      "hover": { 
+        "$value": "{item.shadow.hover}", 
+        "$type": "shadow" 
+      }
+    },
+    "title": {
+      "color":  { 
+        "$value": "{item.title.color}", 
+        "$type": "color" 
+      },
+      "fontSize": {
+        "$value": "{item.title.fontSize}",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": "{item.title.fontWeight}",
+        "$type": "fontWeight"
+      },
+      "lineHeight": {
+        "$value": "{item.title.lineHeight}",
+        "$type": "number"
+      }
+    },
+    "transition": { 
+      "$value": "{item.transition}",
+      "$type": "string" 
+    }
+  }
+}

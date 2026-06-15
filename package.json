@@ -18,7 +18,18 @@
     "bootstrap"
   ],
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node style-dictionary.config.js"
+  },
   "devDependencies": {
-    "@hugolify/prettier-config": "^0.3.1"
+    "@hugolify/prettier-config": "^0.3.1",
+    "@uncinq/component-tokens": "^1.0.0",
+    "@uncinq/design-tokens": "^1.0.0",
+    "style-dictionary": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@uncinq/component-tokens": "^1.0.0",
+    "@uncinq/design-tokens": "^1.0.0"
   }
 }

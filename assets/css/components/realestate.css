@@ -1,0 +1,76 @@
+/* components/realestate.css */
+/*
+ * .realestate remaps the full --item-* API (and the inner --btn-*) onto its
+ * --realestate-* tokens, so any value can be tuned from realestate.json without
+ * touching this file.
+ * Usage: <article class="item realestate">
+ */
+@layer components {
+  .realestate {
+    /* Box */
+    --item-color-background: var(--realestate-color-background);
+    --item-color-border: var(--realestate-color-border);
+    --item-color-text: var(--realestate-color-text);
+    --item-color-text-muted: var(--realestate-color-text-muted);
+    --item-border-radius: var(--realestate-border-radius);
+    --item-border-style: var(--realestate-border-style);
+    --item-border-width: var(--realestate-border-width);
+    --item-shadow: var(--realestate-shadow);
+    --item-shadow-hover: var(--realestate-shadow-hover);
+    --item-transition: var(--realestate-transition);
+
+    /* Content */
+    --item-gap: var(--realestate-gap);
+    --item-order: var(--realestate-order);
+    --item-padding-block: var(--realestate-padding-block);
+    --item-padding-inline: var(--realestate-padding-inline);
+
+    /* Title */
+    --item-title-color: var(--realestate-title-color);
+    --item-title-font-size: var(--realestate-title-font-size);
+    --item-title-font-weight: var(--realestate-title-font-weight);
+    --item-title-line-height: var(--realestate-title-line-height);
+
+    /* Metas */
+    --item-metas-border-end: var(--realestate-metas-border-end);
+    --item-metas-border-start: var(--realestate-metas-border-start);
+    --item-metas-color-background: var(--realestate-metas-color-background);
+    --item-metas-font-size: var(--realestate-metas-font-size);
+    --item-metas-order: var(--realestate-metas-order);
+    --item-metas-padding-block-end: var(--realestate-metas-padding-block-end);
+    --item-metas-padding-block-start: var(--realestate-metas-padding-block-start);
+    --item-metas-padding-inline: var(--realestate-metas-padding-inline);
+
+    /* Media */
+    --item-media-color-background: var(--realestate-media-color-background);
+    --item-media-order: var(--realestate-media-order);
+    --item-media-ratio: var(--realestate-media-ratio);
+
+    /* Inner button (--btn-* is the button component's own API) */
+    --btn-border-width: var(--realestate-btn-border-width);
+    --btn-color-background: var(--realestate-btn-color-background);
+    --btn-color-text: var(--realestate-btn-color-text);
+    --btn-color-text-decoration: var(--realestate-btn-text-decoration);
+    --btn-color-text-decoration-hover: var(--realestate-btn-text-decoration-hover);
+    --btn-padding-inline: var(--realestate-btn-padding);
+    --btn-padding-block: var(--realestate-btn-padding);
+
+    .offer {
+      align-items: baseline;   
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      > div {
+        margin-inline-start: auto;
+      }
+    }
+    .status {
+      inset-block-start: var(--item-padding-block);
+      inset-inline-end: var(--item-padding-inline);
+      margin-block: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+  }
+}

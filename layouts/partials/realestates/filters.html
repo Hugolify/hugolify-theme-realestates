@@ -1,5 +1,5 @@
-{{ $hasTypes := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_categories") }}
-{{ $hasPersons := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_persons") }}
-{{ if or $hasTypes $hasPersons }}
+{{- $hasTypes := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_categories") }}
+{{- $hasPersons := partial "func/HasTaxonomyAvailable" (dict "section" "realestates" "taxonomy" "realestates_persons") }}
+{{- if or $hasTypes $hasPersons }}
   {{ partial "commons/filters.html" (dict "context" . "section" "realestates") }}
-{{ end }}
+{{- end }}

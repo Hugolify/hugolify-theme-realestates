@@ -1,0 +1,15 @@
+/* css/modules/realestates.css — hugolify-theme-realestates entry point */
+
+/* Tokens */
+@import '../tokens/realestates.css';
+
+/* Components */
+@import '../components/realestate.css';
+@import '../components/realestates.css';
+
+/* Pages */
+@import '../pages/realestate.css';
+@import '../pages/realestates.css';
+
+/* Modules / Taxonomies */
+@import 'realestates-categories.css';

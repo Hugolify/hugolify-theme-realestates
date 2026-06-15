@@ -1,0 +1,9 @@
+/* Do not edit directly, this file was auto-generated. */
+
+/* realestates.css */
+@layer tokens {
+  :root {
+    --realestates-min-width: var(--items-min-width);
+    --realestates-nav-margin-block-start: var(--items-nav-margin-block-start);
+  }
+}
