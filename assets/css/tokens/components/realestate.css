@@ -14,8 +14,7 @@
     --realestate-btn-text-decoration-hover: var(--item-btn-text-decoration-hover);
     --realestate-color-background: var(--item-color-background);
     --realestate-color-border: var(--item-color-border);
-    --realestate-color-text: var(--item-color-text);
-    --realestate-color-text-muted: var(--item-color-text-muted);
+    --realestate-color-text: var(--item-color-text-muted);
     --realestate-gap: var(--item-gap);
     --realestate-media-color-background: var(--item-media-color-background);
     --realestate-media-order: var(--item-media-order);
@@ -23,6 +22,7 @@
     --realestate-metas-border-end: var(--item-metas-border-end);
     --realestate-metas-border-start: var(--item-metas-border-start);
     --realestate-metas-color-background: var(--item-metas-color-background);
+    --realestate-metas-color-text: var(--color-text-muted);
     --realestate-metas-font-size: var(--item-metas-font-size);
     --realestate-metas-order: var(--item-metas-order);
     --realestate-metas-padding-inline: var(--item-metas-padding-inline);
@@ -31,6 +31,8 @@
     --realestate-order: var(--item-order);
     --realestate-padding-inline: var(--item-padding-inline);
     --realestate-padding-block: var(--item-padding-block);
+    --realestate-padding-block-start: 0px;
+    --realestate-padding-block-end: var(--item-padding-block-end);
     --realestate-shadow: var(--item-shadow);
     --realestate-shadow-hover: var(--item-shadow-hover);
     --realestate-title-color: var(--item-title-color);

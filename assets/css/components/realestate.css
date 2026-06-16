@@ -23,7 +23,9 @@
     --item-gap: var(--realestate-gap);
     --item-order: var(--realestate-order);
     --item-padding-block: var(--realestate-padding-block);
-    --item-padding-inline: var(--realestate-padding-inline);
+    --item-padding-block-end: var(--realestate-padding-block-end, var(--item-padding-block));
+    --item-padding-block-start: var(--realestate-padding-block-start, var(--item-padding-block));
+    --item-padding-inline: var(--realestate-padding-inline) ;
 
     /* Title */
     --item-title-color: var(--realestate-title-color);
@@ -34,6 +36,7 @@
     /* Metas */
     --item-metas-border-end: var(--realestate-metas-border-end);
     --item-metas-border-start: var(--realestate-metas-border-start);
+    --item-metas-color: var(--realestate-metas-color);
     --item-metas-color-background: var(--realestate-metas-color-background);
     --item-metas-font-size: var(--realestate-metas-font-size);
     --item-metas-order: var(--realestate-metas-order);
@@ -56,14 +59,7 @@
     --btn-padding-block: var(--realestate-btn-padding);
 
     .offer {
-      align-items: baseline;   
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      width: 100%;
-      > div {
-        margin-inline-start: auto;
-      }
+      margin-block-start: auto;
     }
     .status {
       inset-block-start: var(--item-padding-block);

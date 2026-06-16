@@ -56,14 +56,8 @@
         "$type": "color"
       },
       "text": {
-        "default": {
-          "$value": "{item.color.text.default}",
-          "$type": "color"
-        },
-        "muted": {
-          "$value": "{item.color.text.muted}",
-          "$type": "color"
-        }
+        "$value": "{item.color.text.muted}",
+        "$type": "color"
       }
     },
     "gap": {
@@ -100,6 +94,10 @@
       "color": {
         "background": {
           "$value": "{item.metas.color.background}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.muted}",
           "$type": "color"
         }
       },
@@ -138,8 +136,18 @@
         "$type": "dimension"
       },
       "block": {
-        "$value": "{item.padding.block}",
-        "$type": "dimension"
+        "default": {
+          "$value": "{item.padding.block}",
+          "$type": "dimension"
+        },
+        "start": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "end": {
+          "$value": "{item.padding.block.end}",
+          "$type": "dimension"
+        }
       }
     },
     "shadow": {
