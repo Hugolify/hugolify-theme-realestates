@@ -7,8 +7,6 @@
           {{- partial "realestates/price" (dict "price" . "type" $type) -}}
         </p>
       {{ end -}}
-    {{- else -}}
-      <p class="pricing">{{ cond (eq $type "sale") (i18n "realestates.sold" 1) (i18n "realestates.rent" 1) }}</p>
     {{ end -}}
   {{ end -}}
 {{ end -}}

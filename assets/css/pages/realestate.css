@@ -6,6 +6,35 @@
       row-gap: var(--gap-row);
     }
 
+    .metas {
+      .pricing,
+      .status {
+        &::before {
+          content: none !important;
+        }
+        @media (--tablet) {
+          margin-inline-start: auto;
+        }
+      }
+
+      @media not (--tablet) {
+        .pricing,
+        .reference,
+        .status {
+          width: 100%;
+        }
+        
+        .status {
+          order: -1;
+          text-align: center;
+        }
+        
+        .reference + *::before {
+          content: none !important;
+        }
+      }
+    }
+
     .informations {
       table {
         display: flex;
