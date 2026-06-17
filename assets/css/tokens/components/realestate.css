@@ -31,7 +31,7 @@
     --realestate-order: var(--item-order);
     --realestate-padding-inline: var(--item-padding-inline);
     --realestate-padding-block: var(--item-padding-block);
-    --realestate-padding-block-start: 0px;
+    --realestate-padding-block-start: var(--spacing-2xs);
     --realestate-padding-block-end: var(--item-padding-block-end);
     --realestate-shadow: var(--item-shadow);
     --realestate-shadow-hover: var(--item-shadow-hover);

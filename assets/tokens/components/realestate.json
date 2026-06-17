@@ -141,7 +141,7 @@
           "$type": "dimension"
         },
         "start": {
-          "$value": "0px",
+          "$value": "{spacing.2xs}",
           "$type": "dimension"
         },
         "end": {

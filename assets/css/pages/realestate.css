@@ -1,0 +1,25 @@
+@layer layouts {
+  .page-realestates {
+    .grid > .content {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--gap-row);
+    }
+
+    .informations {
+      table {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+        @media (--tablet) {
+          flex-direction: row;
+        }
+      }
+      tbody {
+        flex: 1;
+      }
+    }
+  }
+}
+
+

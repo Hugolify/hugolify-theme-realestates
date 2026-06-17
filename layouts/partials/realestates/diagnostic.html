@@ -6,7 +6,7 @@
         {{ partial "realestates/diagram" (dict "type" "epd" "value" .kwh) }}
         {{ partial "realestates/diagram" (dict "type" "ghg" "value" .co2) }}
         {{- if .in_progress }}
-          <p class="in_progress">{{ i18n "realestates.diagnostic.in_progress" }}</p>
+          <p class="badge in_progress">{{ i18n "realestates.diagnostic.in_progress" }}</p>
         {{ end -}}
       </div>
     </section>

@@ -1,0 +1,109 @@
+@layer components {
+  .diagnostic {
+
+    .diagrams {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: var(--gap);
+
+      @media (--tablet) {
+        flex-direction: row;
+      }
+
+      &-in-progress {
+        position: relative;
+        .diagram {
+          opacity: var(--opaciy-muted);
+        }
+      }
+    }
+
+    /* -- Diagram ------------------------ */
+    .diagram {
+      flex: 1;
+      width: 100%;
+      img {
+        height: auto;
+        width: 100%;
+      }
+      p {
+        font-size: var(--font-size-2xs);
+        font-weight: var(--font-weight-bold);
+        margin-block: 0;
+        text-transform: uppercase;
+      }
+      div {
+        padding-inline-end: 20%;
+        position: relative;
+      }
+      .value {
+        background: var(--diagram-color, var(--color-dark));
+        border: var(--border-width-md) solid var(--color-white);
+        border-radius: var(--radius-xs);
+        color: var(--color-text-on-dark);
+        padding-block: var(--size-8);
+        padding-inline: var(--size-12);
+        position: absolute;
+        right: 0;
+        text-transform: none;
+        top: var(--diagram-value-top, 8%);
+        transform: translateY(-50%);
+
+        &::before {
+          border-block: var(--border-width-lg) solid transparent;
+          border-right: var(--border-width-lg) solid var(--diagram-color, var(--color-dark));
+          content: "";
+          height: 0;
+          left: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateX(-100%) translateY(-50%);
+          width: 0;
+        }
+      }
+    }
+
+    .diagram-a {
+      --diagram-value-top: 9.75%;
+    }
+    .diagram-b {
+      --diagram-value-top: 23%;
+    }
+    .diagram-c {
+      --diagram-value-top: 36%;
+    }
+    .diagram-d {
+      --diagram-value-top: 50%;
+    }
+    .diagram-e {
+      --diagram-value-top: 63.5%;
+    }
+    .diagram-f {
+      --diagram-value-top: 77%;
+    }
+    .diagram-g {
+      --diagram-value-top: 90.5%;
+    }
+
+    .ghg {
+      .value {
+        border-radius: var(--radius-pill);
+      }
+    }
+
+    .in_progress {
+      --badge-color-text: var(--color-text-on-dark);
+      --badge-color-background: var(--color-dark);
+      --badge-font-size: var(--font-size-text);
+      --badge-padding-inline: var(--spacing-sm);
+      left: 50%;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate3d(-50%,-50%,0);
+    }
+  }
+}
+
+    

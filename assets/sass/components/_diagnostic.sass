@@ -52,7 +52,6 @@
     
     .in_progress
         --bs-badge-color: white
-        @extend .badge
         background-color: $gray-800
         font-size: 1rem
         left: 50%
@@ -61,16 +60,8 @@
         top: 50%
         transform: translate3d(-50%,-50%,0)
 
-    $epd: "a" 9.5%, "b" 22.75%, "c" 36%, "d" 50%, "e" 63.5%, "f" 76.75%, "g" 90.5%
-    @each $grade, $top in $epd
-        .epd-#{$grade}
+    $tops: "a" 9.5%, "b" 22.75%, "c" 36%, "d" 50%, "e" 63.5%, "f" 76.75%, "g" 90.5%
+    @each $grade, $top in $tops
+        .diagram-#{$grade}
             .value
                 top: $top
-
-    $ghg: "a" 9.5%, "b" 22.75%, "c" 36%, "d" 50%, "e" 63.5%, "f" 76.75%, "g" 90.5%
-    @each $grade, $top in $ghg
-        .ghg-#{$grade}
-            .value
-                top: $top
-   
-    
