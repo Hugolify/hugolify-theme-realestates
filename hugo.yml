@@ -20,6 +20,8 @@ permalinks:
 
 # Params
 params:
+
+  # hugolify admin
   admin:
     collections:
       realestates:
@@ -33,11 +35,16 @@ params:
           lucide: house
           material_icons: real_estate_agent
           material_symbols: real_estate_agent
-          sveltiacms: real_estate_agent # legacy
         sortable: "['commit_date', 'date', 'reference', 'title']"
         summary: "{{reference}} - {{title}} - {{date | date('YYYY-MM-DD')}}"
+  
+  # Images
   realestates:
+    image:
+      desktop: '870x'
+      sizes: 100vw, 100vw, 75vw
     thumbnail:
       desktop: '416x291'
       mobile: '300x210'
       scrollsnap: '240x168'
+      sizes: 100vw, 50vw, 33vw
