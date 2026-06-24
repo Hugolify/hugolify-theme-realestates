@@ -17,10 +17,10 @@
 {{ if gt $items 0 }}
   {{/*  Get 3 lastest realestates and order by newest  */}}
   {{- $items = (first 3 $items).ByDate.Reverse -}}
-  <section class="related">
-    <div class="container">
-      <h2>{{ i18n "realestates.related.available" $items }}</h2>
-      {{ partial "realestates/items" (dict "pages" $items "scrollsnap" true) }}
-    </div>
-  </section>
+  {{- $title := i18n "realestates.related.available" $items }}
+  {{- partial "commons/related.html" (dict
+    "section" "realestates"
+    "pages" $items
+    "title" $title
+  ) -}}
 {{ end }}

@@ -1,4 +1,8 @@
 <div class="metas">
+  {{- $realestates_categories := "realestates/item/realestates_categories.html" }}
+  {{- if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+    {{ partial $realestates_categories . }}
+  {{- end }}
   {{- partial "realestates/item/area" . -}}
   {{- partial "realestates/item/rooms" . -}}
 </div>

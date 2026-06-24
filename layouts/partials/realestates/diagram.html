@@ -9,7 +9,7 @@
 {{- $i18nLabel := printf "realestates.diagnostic.%s.label" (lower $type) -}}
 {{- $i18nLow := printf "realestates.diagnostic.%s.low" (lower $type) -}}
 {{- $i18nValue := printf "realestates.diagnostic.%s.value" (lower $type) -}}
-<div class="diagram {{ $type }} {{- with $grade }} {{ $type }}-{{ lower . }}{{ end }}">
+<div class="diagram {{ $type }} {{- with $grade }} {{ $type }}-{{ lower . }} diagram-{{ lower . }}{{ end }}">
   <p aria-hidden="true">{{ i18n $i18nHight }}</p>
   <div>
     <img src="/images/diagram-{{ $type }}.svg" alt="{{ i18n $i18nLabel | safeHTMLAttr }}" width="143" height="150" loading="lazy" decoding="async">

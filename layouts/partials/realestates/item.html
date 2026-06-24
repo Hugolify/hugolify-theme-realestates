@@ -1,5 +1,6 @@
-<article class="realestate" itemscope itemtype="http://schema.org/Product"{{ partial "func/SetAnim.html" (dict "element" "item") }}>
+<article class="item realestate" itemscope itemtype="http://schema.org/Product" {{- partial "func/SetAnim.html" (dict "element" "item") }}>
   {{ partial "realestates/item/content" . }}
+  {{ partial "realestates/item/metas" . }}
   {{ partial "realestates/item/status" . }}
   {{ partial "realestates/item/media" . }}
 </article>

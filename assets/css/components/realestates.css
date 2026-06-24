@@ -1,0 +1,12 @@
+/* components/realestates.css */
+/*
+ * .realestates remaps the full --items-* API onto its --realestates-* tokens, so any
+ * value can be tuned from realestates.json without touching this file.
+ * Usage: <article class="items realestates">
+ */
+@layer components {
+  .realestates {
+    --items-min-width: var(--realestates-min-width);
+    --items-nav-margin-block-start: var(--realestates-nav-margin-block-start);
+  }
+}

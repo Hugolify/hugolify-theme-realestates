@@ -1,0 +1,7 @@
+@layer components {
+  .location {
+    .map {
+      margin-block: 0;
+    }
+  }
+}

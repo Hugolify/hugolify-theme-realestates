@@ -1,10 +1,10 @@
 <div class="content">
-  {{ $realestates_categories := "realestates/filters/realestates_categories.html" }}
-  {{ if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+  {{- $realestates_categories := "realestates/filters/realestates_categories.html" }}
+  {{- if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
     {{ partial $realestates_categories . }}
-  {{ end }}
-  {{ $realestates_persons := "realestates/filters/realestates_persons.html" }}
-  {{ if templates.Exists ( printf "partials/%s" $realestates_persons ) }}
+  {{- end }}
+  {{- $realestates_persons := "realestates/filters/realestates_persons.html" }}
+  {{- if templates.Exists ( printf "partials/%s" $realestates_persons ) }}
     {{ partial $realestates_persons . }}
-  {{ end }}
+  {{- end }}
 </div>

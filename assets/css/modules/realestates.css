@@ -1,0 +1,20 @@
+/* css/modules/realestates.css — hugolify-theme-realestates entry point */
+
+/* Tokens */
+@import '../tokens/realestates.css';
+
+/* Components */
+@import '../components/diagnostic.css';
+@import '../components/realestate.css';
+@import '../components/realestates.css';
+
+/* Pages */
+@import '../pages/realestate.css';
+@import '../pages/realestates.css';
+
+/* Modules / Taxonomies */
+@import './components/keyfeatures.css';
+@import './components/location.css';
+@import 'realestates-categories.css';
+@import 'realestates-persons.css';
+@import 'realestates-sellers.css';

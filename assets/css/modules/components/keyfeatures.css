@@ -1,0 +1,19 @@
+@layer components {
+  .keyfeatures {
+    h2 {
+      font-size: var(--font-size-2xs);
+      margin-block: 0;
+      position: relative;
+      text-transform: uppercase;
+
+      &::after {
+        background-color: var(--color-border-on-muted);
+        content: '';
+        height: var(--border-width-sm);
+        inset-block-end: calc(var(--spacing-xs) * -1);
+        position: absolute;
+        width: var(--size-32);
+      }
+    }
+  }
+}

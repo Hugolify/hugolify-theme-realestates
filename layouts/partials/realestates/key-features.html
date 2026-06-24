@@ -1,11 +1,13 @@
 {{ with .Params.keyfeatures }}
-  <div class="keyfeatures">
-    <h2>{{ i18n "realestates.keyfeature" . }}</h2>
+  <div class="alert keyfeatures">
+    <h2 class="alert-heading">{{ i18n "realestates.keyfeature" . }}</h2>
     <ul>
       {{ range . }}
         <li>
           {{- with .icon -}}
-            <i class="icon icon-{{ . }}"></i>
+            {{- if templates.Exists "partials/icon.html" -}}
+              {{ partial "icon.html" . }}
+            {{- end -}}
           {{- end -}}
           <div>
             {{- if .title }}

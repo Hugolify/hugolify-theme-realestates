@@ -1,0 +1,16 @@
+{
+  "realestates": {
+    "minWidth": {
+      "$value": "{items.minWidth}",
+      "$type": "dimension"
+    },
+    "nav": {
+      "margin": {
+        "blockStart": {
+          "$type": "dimension",
+          "$value": "{items.nav.margin.blockStart}"
+        }
+      }
+    }
+  }
+}
