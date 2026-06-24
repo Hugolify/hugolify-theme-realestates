@@ -1,114 +1,77 @@
+{{- /* Resolve the listing agent (RealEstateAgent), when the realestates-persons theme is present. */ -}}
+{{- $agent := false -}}
+{{- if templates.Exists "partials/realestates_persons/schema-agent.html" -}}
+  {{- range first 1 (.GetTerms "realestates_persons") -}}
+    {{- $candidate := partial "realestates_persons/schema-agent.html" . -}}
+    {{- with $candidate.name -}}{{- $agent = $candidate -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Map the listing category to a schema.org accommodation type. */ -}}
+{{- $residenceType := "House" -}}
+{{- $typeByCategory := dict
+  "maison" "House" "villa" "House" "propriété" "House" "mas" "House" "chalet" "House"
+  "appartement" "Apartment" "studio" "Apartment" "duplex" "Apartment" "loft" "Apartment"
+  "immeuble" "ApartmentComplex" "terrain" "Place"
+-}}
+{{- with .Params.realestates_categories -}}
+  {{- $category := . -}}
+  {{- if reflect.IsSlice $category -}}{{- $category = index $category 0 -}}{{- end -}}
+  {{- with index $typeByCategory (lower (printf "%v" $category)) -}}
+    {{- $residenceType = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Build the offer (with the agent as seller). */ -}}
+{{- $offer := dict
+  "@type" "Offer"
+  "businessFunction" "http://purl.org/goodrelations/v1#Sell"
+  "availability" "https://schema.org/InStock"
+  "priceCurrency" (site.Params.currency | default "EUR")
+-}}
+{{- with .Params.offer -}}
+  {{- with .sold -}}{{- $offer = merge $offer (dict "availability" "https://schema.org/OutOfStock") -}}{{- end -}}
+  {{- with .price -}}{{- $offer = merge $offer (dict "price" .) -}}{{- end -}}
+{{- end -}}
+{{- with $agent -}}{{- $offer = merge $offer (dict "seller" .) -}}{{- end -}}
+
+{{- /* Single multi-typed node: the listing is both a Product (offer) and a residence (property). */ -}}
+{{- $listing := dict
+  "@context" "https://schema.org"
+  "@type" (slice "Product" $residenceType)
+  "@id" (printf "%s#listing" .Permalink)
+  "name" (.Title | plainify)
+  "url" .Permalink
+  "offers" $offer
+-}}
+{{- with .Params.image -}}{{- $listing = merge $listing (dict "image" (.src | absURL)) -}}{{- end -}}
+{{- with .Date -}}{{- $listing = merge $listing (dict "releaseDate" .) -}}{{- end -}}
+{{- with .Params.reference -}}{{- $listing = merge $listing (dict "sku" (. | plainify) "identifier" (. | plainify)) -}}{{- end -}}
+{{- with .Params.realestates_categories -}}{{- $listing = merge $listing (dict "category" .) -}}{{- end -}}
+
+{{- with .Params.address -}}
+  {{- $address := dict "@type" "PostalAddress" -}}
+  {{- with .country -}}{{- $address = merge $address (dict "addressCountry" (. | plainify)) -}}{{- end -}}
+  {{- with .city -}}{{- $address = merge $address (dict "addressLocality" (. | plainify)) -}}{{- end -}}
+  {{- with .zipcode -}}{{- $address = merge $address (dict "postalCode" (. | plainify)) -}}{{- end -}}
+  {{- $listing = merge $listing (dict "address" $address) -}}
+  {{- with .coordinates -}}
+    {{- $listing = merge $listing (dict "geo" (dict "@type" "GeoCoordinates" "latitude" .lat "longitude" .lng)) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with .Params.informations -}}
+  {{- with .rooms -}}{{- $listing = merge $listing (dict "numberOfRooms" .) -}}{{- end -}}
+  {{- with .bedrooms -}}{{- $listing = merge $listing (dict "numberOfBedrooms" .) -}}{{- end -}}
+  {{- with .bathrooms -}}{{- $listing = merge $listing (dict "numberOfFullBathrooms" .) -}}{{- end -}}
+  {{- with .showerrooms -}}{{- $listing = merge $listing (dict "numberOfPartialBathrooms" .) -}}{{- end -}}
+  {{- with .floor -}}{{- $listing = merge $listing (dict "floorLevel" (printf "%v" .)) -}}{{- end -}}
+  {{- with .area -}}{{- $listing = merge $listing (dict "floorSize" (dict "@type" "QuantitativeValue" "value" . "unitCode" "MTK")) -}}{{- end -}}
+  {{- with .year -}}{{- $listing = merge $listing (dict "yearBuilt" .) -}}{{- end -}}
+{{- end -}}
+
+{{- with .Content -}}{{- $listing = merge $listing (dict "description" (partial "func/PrepareData.html" .)) -}}{{- end -}}
+
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": {{ .Title | plainify }},
-    "url": {{ .Permalink }},
-
-  {{- with .Params.image }}
-    "thumbnailUrl": {{ .src | absURL }},
-  {{- end -}}
-
-  {{- with .Date }}
-    "releaseDate": {{ . }},
-  {{- end -}}
-
-  {{- with .Params.reference }}
-    "sku": {{ . | plainify }},
-  {{ end -}}
-
-  {{- with .Params.realestates_categories }}
-    "category": {{ . | plainify }},
-  {{ end -}}
-
-  {{- with .Params.offer }}
-    "offers": {
-      "@type": "Offer",
-      "businessFunction": "sell",
-    
-      {{- with .sold }}
-      "availability": "https://schema.org/OutOfStock",
-      {{ else }}
-      "availability": "https://schema.org/InStock",
-      {{- end -}}
-
-      {{- with .price }}
-      "price": {{ . | plainify }},
-      {{- end -}}
-
-      {{- $currency := $.Site.Params.currency | default "EUR" -}}
-      {{- with $currency }}
-      "priceCurrency": {{ . }}
-      {{- end }}
-    },
-  {{ end -}}
-
-  {{- with .Content }}
-    "description": {{ partial "func/PrepareData.html" . }},
-  {{ end }}
-  }
+{{ $listing | jsonify (dict "indent" "  ") | safeJS }}
 </script>
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "House",
-    "name": {{ .Title | plainify }},
-    "url": {{ .Permalink }},
-  
-  {{- with .Params.address }}
-    "address": {
-      "@type": "PostalAddress",
-      {{- with .country }}
-      "addressCountry": {{ . | plainify }},
-      {{- end -}}
-      {{- with .city }}
-      "addressLocality": {{ . | plainify }},
-      {{- end -}}
-      {{- with .zipcode }}
-      "postalCode": {{ . | plainify }}
-      {{- end -}}
-    },
-  {{- end -}}
-
-  {{- with .Params.image }}
-    "image": {{ .src | absURL }},
-  {{- end -}}
-
-  {{- with .Params.reference }}
-    "identifier": {{ . | plainify }},
-  {{ end -}}
-
-  {{- with .Params.informations }}
-    {{- with .rooms }}
-    "numberOfRooms": {{ . | plainify }},
-    {{- end -}}
-    {{- with .bedrooms }}
-    "numberOfBedrooms": {{ . | plainify }},
-    {{- end -}}
-    {{- with .bathrooms }}
-    "numberOfFullBathrooms": {{ . | plainify }},
-    {{- end -}}
-    {{- with .showerrooms }}
-    "numberOfPartialBathrooms": {{ . | plainify }},
-    {{- end -}}
-    {{- with .floor }}
-    "floorLevel": {{ . | plainify }},
-    {{- end -}}
-    {{- with .area }}
-    "floorSize": {{ . | plainify }},
-    {{- end -}}
-    {{- with .year }}
-    "yearBuilt": {{ . | plainify }},
-    {{- end -}}
-  {{- end -}}
-
-  {{- with .Params.realestates_categories }}
-    "accommodationCategory": {{ . | plainify }},
-  {{- end -}}
-
-  {{- with .Content }}
-    "description": {{ partial "func/PrepareData.html" . }},
-  {{ end }}
-  }
-</script>
-
