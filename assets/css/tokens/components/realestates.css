@@ -3,7 +3,7 @@
 /* realestates.css */
 @layer tokens {
   :root {
-    --realestates-min-width: var(--items-min-width);
-    --realestates-nav-margin-block-start: var(--items-nav-margin-block-start);
+    --realestates-min-width: var(--max-width-item);
+    --realestates-nav-margin-block-start: var(--spacing-fluid-md);
   }
 }
