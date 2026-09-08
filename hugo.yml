@@ -35,6 +35,8 @@ params:
           lucide: house
           material_icons: real_estate_agent
           material_symbols: real_estate_agent
+        path: "{{year}}/{{slug}}"
+        slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
         sortable: "['commit_date', 'date', 'reference', 'title']"
         summary: "{{reference}} - {{title}} - {{date | date('YYYY-MM-DD')}}"
   
