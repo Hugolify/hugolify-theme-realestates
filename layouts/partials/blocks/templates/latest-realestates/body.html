@@ -3,10 +3,7 @@
 {{- $type := .realestates_types | default "sale" -}}
 {{- $layout := .layout | default "grid" -}}
 {{- $atf := cond .first true false -}}
-{{- $count := 3 -}}
-{{- with .count -}}
-  {{- $count = . -}}
-{{- end -}}
+{{- $limit := .limit | default 3 -}}
 
 {{- $items := where site.RegularPages "Section" $section -}}
 {{- $items = where $items "Params.realestates_categories" "!=" "Fonds de commerce" -}}
@@ -15,7 +12,7 @@
 {{- $pinned := (where $items "Params.weight" "gt" 0).ByParam "weight" -}}
 {{- $rest := (where $items "Params.weight" "eq" nil).ByDate.Reverse -}}
 {{- $items = $pinned | append $rest -}}
-{{- $items = first $count $items -}}
+{{- $items = first $limit $items -}}
 
 {{- $context := merge . (dict "container" false) -}}
 
