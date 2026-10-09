@@ -1,1 +1,4 @@
-{{ partial "pages/schema.html" (dict "page" . "types" (slice "RealEstateListing")) }}
+{{- /* A listing of properties is a CollectionPage like any other:
+       RealEstateListing is the page of a single listing, see
+       realestates/schema-single.html. */ -}}
+{{ partial "pages/schema.html" . }}

@@ -1,62 +1,98 @@
-{{- /* Resolve the listing agent (RealEstateAgent), when the realestates-persons theme is present. */ -}}
-{{- $agent := false -}}
-{{- if templates.Exists "partials/realestates_persons/schema-agent.html" -}}
-  {{- range first 1 (.GetTerms "realestates_persons") -}}
-    {{- $candidate := partial "realestates_persons/schema-agent.html" . -}}
-    {{- with $candidate.name -}}{{- $agent = $candidate -}}{{- end -}}
-  {{- end -}}
-{{- end -}}
+{{- /* Schema.org for a listing: a RealEstateListing page about the property.
 
-{{- /* Map the listing category to a schema.org accommodation type. */ -}}
+  The property is a single node of two types, as schema.org has it: a Product,
+  which is what an Offer applies to, and an accommodation — House, Apartment…
+  read from its category — which is what rooms, floor size and amenities
+  describe. The offer is a sale or a lease (realestates_types), see
+  func/GetSchemaOffer.html, made by the agent in charge (realestates-persons
+  module) or by the organization behind the site.
+
+  The address goes without its street, as on the page, which only gives the
+  city and a map. */ -}}
+
+{{- /* The accommodation type, from the category of the listing. */ -}}
 {{- $residenceType := "House" -}}
 {{- $typeByCategory := dict
-  "maison" "House" "villa" "House" "propriété" "House" "mas" "House" "chalet" "House"
-  "appartement" "Apartment" "studio" "Apartment" "duplex" "Apartment" "loft" "Apartment"
-  "immeuble" "ApartmentComplex" "terrain" "Place"
+  "maison" "House" "villa" "House" "propriete" "House" "propriété" "House" "mas" "House" "chalet" "House" "house" "House"
+  "appartement" "Apartment" "studio" "Apartment" "duplex" "Apartment" "loft" "Apartment" "apartment" "Apartment" "flat" "Apartment"
+  "immeuble" "ApartmentComplex" "building" "ApartmentComplex"
+  "terrain" "Place" "land" "Place"
 -}}
+{{- $category := false -}}
 {{- with .Params.realestates_categories -}}
-  {{- $category := . -}}
+  {{- $category = . -}}
   {{- if reflect.IsSlice $category -}}{{- $category = index $category 0 -}}{{- end -}}
-  {{- with index $typeByCategory (lower (printf "%v" $category)) -}}
+  {{- with index $typeByCategory (anchorize (printf "%v" $category)) -}}
     {{- $residenceType = . -}}
   {{- end -}}
 {{- end -}}
 
-{{- /* Build the offer (with the agent as seller). */ -}}
-{{- $offer := dict
-  "@type" "Offer"
-  "businessFunction" "http://purl.org/goodrelations/v1#Sell"
-  "availability" "https://schema.org/InStock"
-  "priceCurrency" (site.Params.currency | default "EUR")
--}}
-{{- with .Params.offer -}}
-  {{- with .sold -}}{{- $offer = merge $offer (dict "availability" "https://schema.org/OutOfStock") -}}{{- end -}}
-  {{- with .price -}}{{- $offer = merge $offer (dict "price" .) -}}{{- end -}}
-{{- end -}}
-{{- with $agent -}}{{- $offer = merge $offer (dict "seller" .) -}}{{- end -}}
+{{- /* A rental is leased out, anything else is for sale. */ -}}
+{{- $realestatesTypes := .Params.realestates_types | default "sale" -}}
+{{- $isRent := in (cond (reflect.IsSlice $realestatesTypes) $realestatesTypes (slice $realestatesTypes)) "rent" -}}
 
-{{- /* Single multi-typed node: the listing is both a Product (offer) and a residence (property). */ -}}
+{{- $seller := false -}}
+{{- range first 1 (partial "func/GetSchemaTerms.html" (dict "page" . "taxonomy" "realestates_persons" "format" "page")) -}}
+  {{- $seller = partial "func/GetSchemaPerson.html" (dict "page" . "compact" true) -}}
+{{- end -}}
+
 {{- $listing := dict
-  "@context" "https://schema.org"
   "@type" (slice "Product" $residenceType)
   "@id" (printf "%s#listing" .Permalink)
-  "name" (.Title | plainify)
+  "name" (partial "func/PrepareData.html" .Title)
   "url" .Permalink
-  "offers" $offer
 -}}
-{{- with .Params.image -}}{{- $listing = merge $listing (dict "image" (.src | absURL)) -}}{{- end -}}
-{{- with .Date -}}{{- $listing = merge $listing (dict "releaseDate" .) -}}{{- end -}}
-{{- with .Params.reference -}}{{- $listing = merge $listing (dict "sku" (. | plainify) "identifier" (. | plainify)) -}}{{- end -}}
-{{- with .Params.realestates_categories -}}{{- $listing = merge $listing (dict "category" .) -}}{{- end -}}
+
+{{- with partial "func/GetSchemaOffer.html" (dict
+  "offer" .Params.offer
+  "url" .Permalink
+  "function" (cond $isRent "lease" "sell")
+  "seller" (or $seller (partial "func/GetSchemaOrganization.html" (dict "compact" true)))
+) -}}
+  {{- $listing = merge $listing (dict "offers" .) -}}
+{{- end -}}
+
+{{- with .Description -}}
+  {{- $listing = merge $listing (dict "description" (partial "func/PrepareData.html" .)) -}}
+{{- else -}}
+  {{- with .Summary -}}
+    {{- $listing = merge $listing (dict "description" (partial "func/PrepareData.html" .)) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $images := slice -}}
+{{- with partial "func/GetSchemaImage.html" .Params.image -}}
+  {{- $images = $images | append (merge . (dict "@id" (printf "%s#primaryimage" $.Permalink))) -}}
+{{- end -}}
+{{- range .Params.gallery -}}
+  {{- with partial "func/GetSchemaImage.html" . -}}
+    {{- $images = $images | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with $images -}}
+  {{- $listing = merge $listing (dict "image" .) -}}
+{{- end -}}
+
+{{- with .Params.reference -}}
+  {{- $reference := partial "func/PrepareData.html" (string .) -}}
+  {{- $listing = merge $listing (dict "sku" $reference "identifier" $reference) -}}
+{{- end -}}
+{{- /* The translated title of the term, the raw key without the module. */ -}}
+{{- with partial "func/GetSchemaTerms.html" (dict "page" . "taxonomy" "realestates_categories") -}}
+  {{- $listing = merge $listing (dict "category" (index . 0)) -}}
+{{- else -}}
+  {{- with $category -}}
+    {{- $listing = merge $listing (dict "category" (partial "func/PrepareData.html" (printf "%v" .))) -}}
+  {{- end -}}
+{{- end -}}
 
 {{- with .Params.address -}}
-  {{- $address := dict "@type" "PostalAddress" -}}
-  {{- with .country -}}{{- $address = merge $address (dict "addressCountry" (. | plainify)) -}}{{- end -}}
-  {{- with .city -}}{{- $address = merge $address (dict "addressLocality" (. | plainify)) -}}{{- end -}}
-  {{- with .zipcode -}}{{- $address = merge $address (dict "postalCode" (. | plainify)) -}}{{- end -}}
-  {{- $listing = merge $listing (dict "address" $address) -}}
-  {{- with .coordinates -}}
-    {{- $listing = merge $listing (dict "geo" (dict "@type" "GeoCoordinates" "latitude" .lat "longitude" .lng)) -}}
+  {{- $address := dict "zipcode" .zipcode "city" .city "country" .country "country_code" .country_code -}}
+  {{- with partial "func/GetSchemaAddress.html" $address -}}
+    {{- $listing = merge $listing (dict "address" .) -}}
+  {{- end -}}
+  {{- with partial "func/GetSchemaGeo.html" . -}}
+    {{- $listing = merge $listing (dict "geo" .) -}}
   {{- end -}}
 {{- end -}}
 
@@ -65,13 +101,41 @@
   {{- with .bedrooms -}}{{- $listing = merge $listing (dict "numberOfBedrooms" .) -}}{{- end -}}
   {{- with .bathrooms -}}{{- $listing = merge $listing (dict "numberOfFullBathrooms" .) -}}{{- end -}}
   {{- with .showerrooms -}}{{- $listing = merge $listing (dict "numberOfPartialBathrooms" .) -}}{{- end -}}
-  {{- with .floor -}}{{- $listing = merge $listing (dict "floorLevel" (printf "%v" .)) -}}{{- end -}}
-  {{- with .area -}}{{- $listing = merge $listing (dict "floorSize" (dict "@type" "QuantitativeValue" "value" . "unitCode" "MTK")) -}}{{- end -}}
+  {{- with add (int (.bathrooms | default 0)) (int (.showerrooms | default 0)) -}}
+    {{- $listing = merge $listing (dict "numberOfBathroomsTotal" .) -}}
+  {{- end -}}
+  {{- /* 0 is the ground floor, a floor all the same. */ -}}
+  {{- if or .floor (eq .floor 0) -}}
+    {{- $listing = merge $listing (dict "floorLevel" (printf "%v" .floor)) -}}
+  {{- end -}}
+  {{- with .area -}}
+    {{- $listing = merge $listing (dict "floorSize" (dict "@type" "QuantitativeValue" "value" . "unitCode" "MTK")) -}}
+  {{- end -}}
   {{- with .year -}}{{- $listing = merge $listing (dict "yearBuilt" .) -}}{{- end -}}
+
+  {{- /* The amenities the page lists, under the names it gives them. */ -}}
+  {{- $amenities := slice -}}
+  {{- range slice "elevator" "balcony" "terrace" "swimmingpool" "outbuilding" "cave" "garage" "box" "parking" -}}
+    {{- if index $.Params.informations (printf "has_%s" .) -}}
+      {{- $amenities = $amenities | append (dict
+        "@type" "LocationFeatureSpecification"
+        "name" (i18n (printf "realestates.%s" .) | default .)
+        "value" true
+      ) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $amenities -}}
+    {{- $listing = merge $listing (dict "amenityFeature" .) -}}
+  {{- end -}}
 {{- end -}}
 
-{{- with .Content -}}{{- $listing = merge $listing (dict "description" (partial "func/PrepareData.html" .)) -}}{{- end -}}
+{{- $webpage := partial "func/GetSchemaWebPage.html" (dict
+  "page" .
+  "type" "RealEstateListing"
+  "mainEntity" (dict "@id" (index $listing "@id"))
+) -}}
+{{- with partial "func/GetSchemaDate.html" .Date -}}
+  {{- $webpage = merge $webpage (dict "datePosted" .) -}}
+{{- end -}}
 
-<script type="application/ld+json">
-{{ $listing | jsonify (dict "indent" "  ") | safeJS }}
-</script>
+{{- partial "commons/jsonld.html" (slice $webpage $listing) -}}

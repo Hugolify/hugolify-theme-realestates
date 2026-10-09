@@ -1,21 +1,14 @@
 {{- $type := .Params.realestates_types | default "sale" -}}
 {{ with .Params.offer }}
-  <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-    {{ if .sold }}
-      <meta itemprop="availability" content="https://schema.org/OutOfStock">
-    {{ else }}
-      <meta itemprop="availability" content="https://schema.org/InStock">
-    {{ end }}
+  <div>
     {{ if not .hide_price }}
       {{ with .price }}
-        {{ $currency := $.Site.Params.currency | default "EUR" }}
-        <p class="pricing" itemprop="price" content="{{ . }}">
+        <p class="pricing">
           {{- partial "func/GetHumanPrice" . -}}
           {{- if eq $type "rent" -}}
            / {{ i18n "realestates.month" | lower }}
           {{- end -}}
         </p>
-        <meta itemprop="priceCurrency" content="{{ $currency }}">
       {{ end }}
     {{ end }}
   </div>
