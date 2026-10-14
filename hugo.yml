@@ -37,7 +37,7 @@ params:
           material_symbols: real_estate_agent
         path: "{{year}}/{{slug}}"
         slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-        sortable: "['commit_date', 'date', 'reference', 'title']"
+        sortable_fields: [commit_date, date, reference, title]
         summary: "{{reference}} - {{title}} - {{date | date('YYYY-MM-DD')}}"
   
   # Images
