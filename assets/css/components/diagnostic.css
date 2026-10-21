@@ -41,7 +41,7 @@
         background: var(--diagram-color, var(--color-dark));
         border: var(--border-width-md) solid var(--color-white);
         border-radius: var(--radius-xs);
-        color: var(--color-text-on-dark);
+        color: var(--color-on-dark);
         padding-block: var(--size-8);
         padding-inline: var(--size-12);
         position: absolute;
@@ -93,7 +93,7 @@
     }
 
     .in_progress {
-      --badge-color-text: var(--color-text-on-dark);
+      --badge-color-text: var(--color-on-dark);
       --badge-color-background: var(--color-dark);
       --badge-font-size: var(--font-size-text);
       --badge-padding-inline: var(--spacing-sm);
