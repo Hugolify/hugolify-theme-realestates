@@ -1,4 +1,7 @@
-{{ with .Params.gallery }}
+{{- /* images, the name every module gives its list of images. gallery is
+       still read for the listings written before, which may hold bare URLs
+       (the admin's gallery_simple field). */ -}}
+{{ with .Params.images | default .Params.gallery }}
   {{ $len := . | len }}
   {{ $gallery := i18n "gallery.label" $len }}
   {{ $ratio := .7 }}

@@ -60,16 +60,9 @@
   {{- end -}}
 {{- end -}}
 
-{{- $images := slice -}}
-{{- with partial "func/GetSchemaImage.html" .Params.image -}}
-  {{- $images = $images | append (merge . (dict "@id" (printf "%s#primaryimage" $.Permalink))) -}}
-{{- end -}}
-{{- range .Params.gallery -}}
-  {{- with partial "func/GetSchemaImage.html" . -}}
-    {{- $images = $images | append . -}}
-  {{- end -}}
-{{- end -}}
-{{- with $images -}}
+{{- /* The featured image and the images of the listing, see
+       func/GetSchemaImages.html; gallery is the name they had before. */ -}}
+{{- with partial "func/GetSchemaImages.html" (dict "page" . "images" (.Params.images | default .Params.gallery)) -}}
   {{- $listing = merge $listing (dict "image" .) -}}
 {{- end -}}
 
