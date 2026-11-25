@@ -18,7 +18,7 @@
         </tr>
       {{- else -}}
         {{- $realestates_categories := "realestates/realestates_categories.html" -}}
-        {{- if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+        {{- if templates.Exists ( printf "_partials/%s" $realestates_categories ) }}
           <tr>
             <th scope="row">{{ i18n "realestates_categories.title" }}</th>
             <td>{{ partial $realestates_categories . }}</td>

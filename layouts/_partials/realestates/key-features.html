@@ -5,7 +5,7 @@
       {{ range . }}
         <li>
           {{- with .icon -}}
-            {{- if templates.Exists "partials/icon.html" -}}
+            {{- if templates.Exists "_partials/icon.html" -}}
               {{ partial "icon.html" . }}
             {{- end -}}
           {{- end -}}

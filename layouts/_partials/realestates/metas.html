@@ -1,7 +1,7 @@
 <div class="metas">
   {{ partial "realestates/reference" . }}
   {{ $realestates_categories := "realestates/realestates_categories.html" }}
-  {{ if templates.Exists ( printf "partials/%s" $realestates_categories ) }}
+  {{ if templates.Exists ( printf "_partials/%s" $realestates_categories ) }}
     {{ partial $realestates_categories . }}
   {{ end }}
   {{ partial "realestates/area" . }}
