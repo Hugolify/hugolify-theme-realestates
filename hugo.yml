@@ -31,6 +31,7 @@ params:
             value: false
         icon:
           bootstrap_icons: house
+          hugeicons: RealEstate01
           iconoir: home
           lucide: house
           material_icons: real_estate_agent
